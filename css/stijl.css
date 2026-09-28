@@ -156,6 +156,9 @@ nav.side h2 a[aria-current="page"]{font-weight:inherit}
 .wv.partner{border-left:0;padding-left:0}
 .cond{font-size:.97rem}
 .cond strong{color:var(--rood)}
+/* Regel onder een theoriesectie: wat betekent dit voor de begeleider? */
+.voor-jou{margin:.8rem 0 0;padding:.6rem 0 0;border-top:1px solid var(--lijn);font-size:.95rem}
+.voor-jou strong{color:var(--rood)}
 h3.moment{margin:2rem 0 .2rem;font-size:1.2rem;color:var(--rood)}
 
 /* Kleine regel onder een blok: "Uit: ...", "Meer: ..." */
@@ -227,6 +230,9 @@ table.matrix td.c{text-align:center;padding:.5rem .3rem}
 .levels li::before{content:counter(lv);position:absolute;left:0;top:.65rem;display:grid;place-items:center;width:2rem;height:2rem;
                    border-radius:50%;background:var(--rood);color:#fff;font-family:var(--kop);font-stretch:125%;font-weight:800}
 
+/* Kernvragen op de pagina Ethiek en toestemming */
+.kernvraag{font-weight:700}
+
 /* Genummerde lijst van de werkzame factoren */
 .factors{counter-reset:f;list-style:none;margin:1.4rem 0;padding:0;border-top:2px solid var(--inkt)}
 .factors li{counter-increment:f;position:relative;padding:1rem 0 1rem 4rem;border-bottom:2px solid var(--inkt)}
@@ -256,6 +262,13 @@ article[data-page^="praktijk/"] h2{clear:both}
 .resbtn:hover{background:var(--inkt)}
 .resbtn::after{content:" \2197"}
 .ressrc{margin-left:.4rem;font-size:.85rem}
+
+/* Downloads (pagina Ethiek en toestemming) */
+.downloads{display:flex;flex-wrap:wrap;gap:.5rem}
+.download{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .8rem;font-size:.9rem;font-weight:700;
+          background:var(--wit);border:1px solid var(--rood);color:var(--rood);text-decoration:none}
+.download::before{content:"\2193"}
+.download:hover{background:var(--rood);color:#fff}
 
 /* Partnerlogo's (pagina Over het onderzoek) */
 .partner .plogo{display:inline-block;margin-bottom:.5rem}
