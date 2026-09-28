@@ -50,6 +50,14 @@
   document.querySelectorAll('img[src^="img/"]').forEach(function (im) {
     im.src = beeld(im.getAttribute('src'));
   });
+  // Downloads: in de gebundelde versie zitten ook die in window.GIDS_BEELDEN.
+  document.querySelectorAll('a[href^="downloads/"]').forEach(function (a) {
+    var pad = a.getAttribute('href');
+    if (beeld(pad) !== pad) {
+      a.setAttribute('download', pad.split('/').pop());
+      a.href = beeld(pad);
+    }
+  });
 
 
   /* 1. Fasestrook ------------------------------------------------------- */
