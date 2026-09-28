@@ -18,6 +18,7 @@
    vaste naam, bijvoorbeeld <section class="wv" data-wv="fase-2/mijn-werkvorm">.
    Staat de werkvorm niet op een fasepagina, geef dan ook de fase mee:
    <section class="wv" data-wv="toestemming/mijn-werkvorm" data-fase="fase-4">.
+   Hoort ze bij een werking die jaren doorloopt, gebruik dan data-fase="doorlopend".
    Staat dezelfde werkvorm ook op een fasepagina, gebruik dan gewoon dezelfde
    naam als daar (zonder data-fase): dan telt ze als één keuze.
    Verander een naam later niet: opgeslagen projecten verwijzen ernaar. Moet het
@@ -216,7 +217,8 @@
   function lijstWerkvormen(items, alleenLezen) {
     return '<ul class="pb-lijst">' + items.map(function (w) {
       // Staat de werkvorm op een andere pagina dan de fase zelf, toon dan waar ze vandaan komt.
-      var herkomst = (w.groep.indexOf('fase-') === 0 && w.pagina !== w.groep && TITELS[w.pagina])
+      var thuis = w.groep === 'doorlopend' ? 'fasen' : w.groep;
+      var herkomst = ((w.groep.indexOf('fase-') === 0 || w.groep === 'doorlopend') && w.pagina !== thuis && TITELS[w.pagina])
         ? '<span class="pb-herkomst">Uit: ' + esc(TITELS[w.pagina]) + '</span>' : '';
       return '<li><div class="pb-item"><strong><a href="#/' + esc(w.pagina) + '">' + esc(w.titel) + '</a></strong>' + herkomst +
         (w.tekst ? '<p>' + esc(w.tekst) + '</p>' : '') +
