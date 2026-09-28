@@ -54,6 +54,14 @@ def main():
         if pad.startswith("img/pictogrammen/") or pad.startswith("img/logo-"):
             voor_script[pad] = uri
 
+    # Downloads (PDF, Word) één keer opnemen; gids.js zet de links er zelf naar.
+    dl_map = os.path.join(MAP, "downloads")
+    if os.path.isdir(dl_map):
+        for naam in sorted(os.listdir(dl_map)):
+            pad = "downloads/" + naam
+            soort = "application/vnd.openxmlformats-officedocument.wordprocessingml.document" if naam.endswith(".docx") else (mimetypes.guess_type(naam)[0] or "application/octet-stream")
+            voor_script[pad] = "data:%s;base64,%s" % (soort, base64.b64encode(lees(pad, binair=True)).decode("ascii"))
+
     html = html.replace('<link rel="stylesheet" href="css/stijl.css">', "<style>\n%s\n</style>" % css)
     # Beelden voor de scripts, daarna elk script uit de map js inlinen.
     html = html.replace(

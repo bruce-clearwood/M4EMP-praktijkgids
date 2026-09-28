@@ -15,7 +15,9 @@ m4emp-gids/
 │   ├── logo-quindo.png
 │   ├── praktijken/             één beeld per praktijk
 │   └── pictogrammen/           de pictogrammen (SVG)
+├── downloads/                  formulier, gesprekskaart en rechtenkaart (PDF en Word)
 ├── hulpmiddelen/bundel.py      maakt er één los bestand van (zie punt 9)
+├── hulpmiddelen/downloads-bron bronbestanden om de PDF's opnieuw te maken (zie punt 14)
 └── HANDLEIDING.md              dit bestand
 ```
 
@@ -175,3 +177,25 @@ Staat dezelfde werkvorm ook op een fasepagina, geef ze dan exact dezelfde naam a
 Na elke wijziging staat de nieuwe versie binnen een paar minuten online. Zie je de oude versie nog, herlaad dan de pagina zonder cache (Ctrl+Shift+R, op een Mac Cmd+Shift+R).
 
 **Een oude versie terugzetten** kan altijd: GitHub bewaart elke wijziging onder **History**.
+
+## 14. De downloads aanpassen
+
+Op de pagina Ethiek en toestemming staan drie hulpmiddelen om te downloaden. De bestanden staan in de map `downloads`:
+
+- `sjabloon-toestemmingsformulier.docx` en `.pdf`
+- `gesprekskaart-kernvragen.pdf`
+- `drie-rechten-voor-jongeren.pdf`
+
+**Het Word-sjabloon** pas je gewoon aan in Word en bewaar je opnieuw onder dezelfde naam. Maak daarna ook een nieuwe PDF (in Word: Bestand, Opslaan als, PDF), of maak de PDF opnieuw via het bronbestand hieronder.
+
+**De PDF's opnieuw maken.** De map `hulpmiddelen/downloads-bron` bevat per download een HTML-bestand met de tekst en de opmaak, en de lettertypes in `fonts`. Pas de tekst aan in het HTML-bestand, open het in Chrome of Edge en kies **Afdrukken**, dan **Opslaan als PDF**, met papier **A4**, marges **Geen** en **Achtergrondafbeeldingen** aangevinkt. Bewaar de PDF in de map `downloads` onder dezelfde naam.
+
+**Een nieuwe download toevoegen.** Zet het bestand in `downloads` en maak een link zoals:
+
+```html
+<a class="download" href="downloads/mijn-bestand.pdf" download>Mijn bestand (PDF, 120 kB)</a>
+```
+
+Het bundelscript neemt alle bestanden uit `downloads` automatisch mee in de gebundelde versie.
+
+De lettertypes Archivo en Figtree vallen onder de SIL Open Font License en mogen mee verspreid worden.
