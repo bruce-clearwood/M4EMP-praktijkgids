@@ -153,6 +153,8 @@ Nieuwe werkvorm? Geef ze een nieuwe, unieke naam in dezelfde vorm (`fase-nummer/
 <section class="wv" data-wv="toestemming/stopsignaal" data-fase="fase-3">
 ```
 
+Dat geldt ook voor de blokken op de praktijkpagina's: concrete werkvormen hebben daar een knop, principes en uitkomsten niet. Hoort een werkvorm bij een werking die jaren doorloopt, gebruik dan `data-fase="doorlopend"`; ze komt dan in het project onder "Als je werking doorloopt".
+
 Staat dezelfde werkvorm ook op een fasepagina, geef ze dan exact dezelfde naam als daar (en laat `data-fase` weg). Dan telt ze als één keuze: wie ze aanklikt op de ene pagina, ziet ze ook op de andere aangevinkt. Moet je ooit toch een naam veranderen, zet de oude naam dan in de lijst `ALIASSEN` bovenaan `js/projectbouwer.js`, zodat oude projecten blijven werken. Verander de naam van een bestaande werkvorm niet meer: opgeslagen projecten en deellinks verwijzen ernaar. De titel en de tekst mag je wel aanpassen.
 
 **Denkvragen en startvragen aanpassen.** Bovenaan `js/projectbouwer.js` staan `DENKVRAGEN` (één per fase, overgenomen van de pagina Ethiek en toestemming) en `STARTVRAGEN` (de vragen bovenaan het project). Pas daar de tekst aan tussen de aanhalingstekens.
