@@ -1,0 +1,415 @@
+/* =========================================================================
+   Media for Empowerment, praktijkgids
+   Stijlbestand. Huisstijl afgeleid van quindo.be (kleuren gesampled uit
+   screenshots van 28/09/2026; lettertypes Archivo en Figtree benaderen die
+   van de website).
+
+   Inhoud
+   1.  Kleuren en lettertypes (hier pas je de huisstijl aan)
+   2.  Basis
+   3.  Prototypebalk
+   4.  Opbouw: kolommen en menu
+   5.  Paginakop: titels, labels, pictogrammen
+   6.  Fasestrook
+   7.  Tekstblokken: werkvormen, kaders, samenvatting, citaten
+   8.  Lijsten en tabellen
+   9.  Praktijkpagina's: beelden en resultaatblok
+   10. Onderaan elke pagina: verwijzingen, voetnoten, colofon
+   11. Donkere modus
+   12. Smal scherm (smartphone)
+   13. Beweging
+   14. Afdrukken
+   15. Bouwmodule "Mijn project"
+
+   Kaderregel: een wit kader met rode lijn bovenaan is er enkel voor tips en
+   afwegingen (.callout), het resultaatblok (.result) en de bedanking (.dank).
+   Werkvormen krijgen een rode lijn links (.wv). Kerngegevens en tabellen
+   krijgen enkel lijnen.
+   ========================================================================= */
+
+
+/* 1. Kleuren en lettertypes ---------------------------------------------- */
+
+:root{
+  --achtergrond-boven:#fdf9fb;
+  --achtergrond-midden:#f5e2ed;
+  --achtergrond-onder:#eaddf9;
+  --wit:#ffffff;          /* kaders */
+  --inkt:#1d1d1b;         /* tekst en lijnen */
+  --rood:#b72634;         /* accentkleur (Quindo-rood) */
+  --rood-zacht:#f6dfe3;   /* markering bij een aangeklikte voetnoot of bron */
+  --lijn:#e4dbe2;         /* fijne scheidingslijnen */
+  --onderschrift:#5c5660; /* enkel voor onderschriften bij beelden */
+  --pictogram-rondje:#f9edf3; /* licht rondje achter pictogrammen in donkere modus */
+
+  --kop:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --tekst:"Figtree","Helvetica Neue",Arial,sans-serif;
+
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+
+/* 2. Basis --------------------------------------------------------------- */
+
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--achtergrond-boven)}
+body{
+  margin:0;min-height:100%;
+  color:var(--inkt);font-family:var(--tekst);font-size:1.0625rem;line-height:1.7;
+  background:linear-gradient(170deg,var(--achtergrond-boven) 0%,var(--achtergrond-midden) 55%,var(--achtergrond-onder) 100%) fixed;
+}
+p{margin:.6rem 0}
+li::marker{color:var(--rood)}
+
+a{
+  color:var(--inkt);font-weight:600;
+  text-decoration:underline;text-decoration-color:var(--rood);
+  text-decoration-thickness:3px;text-underline-offset:4px;
+}
+a:hover{color:var(--rood)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--rood);outline-offset:3px}
+
+h1{font-family:var(--kop);font-stretch:125%;font-weight:800;text-transform:uppercase;
+   font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.02;margin:.1rem 0 1.2rem}
+h2{font-family:var(--kop);font-stretch:125%;font-weight:700;font-size:1.5rem;line-height:1.15;margin:2.6rem 0 .6rem}
+h3{font-family:var(--kop);font-stretch:112%;font-weight:700;font-size:1.08rem;line-height:1.3;margin:1.6rem 0 .3rem}
+.lead{font-size:1.2rem;line-height:1.55}
+
+
+/* 3. Prototypebalk (verwijder de .proto-balk in index.html bij publicatie) */
+
+.proto{
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;
+  padding:.55rem 1.5rem;font-size:.875rem;
+  background:var(--wit);border-bottom:1px solid var(--lijn);
+}
+.proto-knoppen{display:flex;gap:.5rem;flex-wrap:wrap}
+.proto button{font:600 .85rem var(--tekst);background:var(--wit);border:1px solid var(--inkt);color:var(--inkt);padding:.3rem .8rem;cursor:pointer}
+
+
+/* 4. Opbouw: kolommen en menu ------------------------------------------- */
+
+.shell{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1240px;margin:0 auto}
+main{padding:2.5rem clamp(1.25rem,4vw,3.5rem) 4rem;min-width:0}
+article{max-width:70ch}
+article[hidden]{display:none}
+
+nav.side{padding:2rem 1.25rem 2rem 1.75rem;position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow:auto}
+.logo{display:block;font-family:var(--kop);font-stretch:125%;font-weight:800;font-size:1.35rem;line-height:1.05;
+      color:var(--rood);text-decoration:none;text-transform:lowercase}
+.logo:hover{color:var(--rood)}
+.logo small{display:block;margin-top:.4rem;font-family:var(--tekst);font-stretch:100%;font-weight:500;font-size:.85rem;color:var(--inkt);text-transform:none}
+
+nav.side h2{margin:1.8rem 0 .4rem;font-family:var(--kop);font-stretch:125%;font-size:.8rem;font-weight:800;text-transform:uppercase;color:var(--inkt)}
+nav.side h2 a{color:inherit;font-weight:inherit;text-decoration:none}
+nav.side ul{list-style:none;margin:0;padding:0}
+nav.side li a{display:flex;align-items:center;padding:.18rem 0;font-weight:500;font-size:.97rem;color:var(--inkt);text-decoration:none}
+nav.side a:hover{color:var(--rood)}
+nav.side li a[aria-current="page"],nav.side h2 a[aria-current="page"]{color:var(--rood);font-weight:700;text-decoration:underline;text-decoration-color:var(--rood);text-decoration-thickness:3px}
+nav.side h2 a[aria-current="page"]{font-weight:inherit}
+.navtoggle{display:none}
+
+
+/* 5. Paginakop: titels, labels, pictogrammen ----------------------------- */
+
+.kind{display:inline-block;margin-bottom:.1rem;font-size:.85rem;font-weight:700;color:var(--rood)}
+
+.back{display:flex;align-items:center;gap:.4rem;width:max-content;margin-bottom:1.2rem;padding:.3rem .9rem;
+      font:600 .95rem var(--tekst);background:var(--wit);border:1px solid var(--inkt);color:var(--inkt);cursor:pointer}
+.back:hover{background:var(--rood);border-color:var(--rood);color:#fff}
+
+/* Startpagina: pictogram links van de titel */
+.hero{display:flex;align-items:center;gap:1.6rem;margin:.2rem 0 1.4rem}
+.hero h1{margin:0}
+.hero-ico{flex:none;width:170px;height:170px}
+.hero-ico img{display:block;width:100%;height:100%}
+
+/* Pictogrammen: de bestanden staan in img/pictogrammen, gids.js plaatst ze */
+.ico{display:inline-block;flex:none;vertical-align:middle}
+.ico img{display:block;width:100%;height:100%}
+.ico-sm{width:22px;height:22px;margin-right:.5rem}          /* menu */
+.ico-md{width:38px;height:38px;margin-right:.7rem;vertical-align:-9px} /* overzichtspagina's */
+.ico-lg{float:right;width:104px;height:104px;margin:0 0 .8rem 1.4rem} /* naast de paginatitel */
+.ico-arc{display:block;width:26px;height:26px;margin-bottom:.25rem}   /* fasestrook */
+
+
+/* 6. Fasestrook ---------------------------------------------------------- */
+
+.arc{clear:both;display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem;margin:1.2rem 0 1.8rem}
+.arc a{display:block;padding:.5rem .5rem .55rem;font-size:.78rem;font-weight:500;line-height:1.2;
+       background:var(--wit);border:1px solid var(--lijn);color:var(--inkt);text-decoration:none}
+.arc a b{display:block;font-family:var(--kop);font-stretch:125%;font-size:1.05rem}
+.arc a:hover{border-color:var(--inkt)}
+.arc a.here{background:var(--rood);border-color:var(--rood);color:#fff}
+.arc a.here .ico-arc{background:var(--pictogram-rondje);border-radius:50%;padding:1px}
+
+
+/* 7. Tekstblokken -------------------------------------------------------- */
+
+/* Werkvorm of blok: rode lijn links, geen kader */
+.wv{border-left:3px solid var(--rood);padding:.1rem 0 .1rem 1.1rem;margin:1.6rem 0}
+.wv h3{margin-top:0}
+.wv h3 a{text-decoration-thickness:2px}
+.wv ul{margin:.4rem 0;padding-left:1.2rem}
+.wv.partner{border-left:0;padding-left:0}
+.cond{font-size:.97rem}
+.cond strong{color:var(--rood)}
+h3.moment{margin:2rem 0 .2rem;font-size:1.2rem;color:var(--rood)}
+
+/* Kleine regel onder een blok: "Uit: ...", "Meer: ..." */
+.grond{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--lijn);font-size:.85rem}
+.grond a{text-decoration-thickness:2px}
+.wv .grond{margin-top:.4rem;padding-top:0;border-top:0}
+
+/* De drie soorten kaders */
+.callout,.result,.dank{margin:1.6rem 0;padding:1.1rem 1.3rem;background:var(--wit);border:1px solid var(--lijn);border-top:4px solid var(--rood)}
+.callout h3,.dank h2{margin-top:0}
+.callout p:last-child{margin-bottom:0}
+.result h2{margin:0 0 .4rem;font-size:1.15rem}
+.result p{margin:.4rem 0}
+
+/* Samenvatting bovenaan een fasepagina */
+.kort{margin:1.4rem 0 2rem;padding:.8rem 0 .6rem;border-top:2px solid var(--inkt);border-bottom:2px solid var(--inkt)}
+.kort h2{margin:0 0 .3rem;font-size:1.15rem}
+.kort ul{margin:0;padding-left:1.2rem}
+.kort li{margin:.25rem 0;font-size:1.05rem}
+
+/* Uitgelicht citaat (enkel echte citaten van informanten) */
+.quote{margin:3rem 0 2.4rem;padding:0}
+.quote blockquote{position:relative;margin:0;padding-left:2.4rem;font-family:var(--kop);font-stretch:112%;font-weight:700;
+                  font-size:clamp(1.35rem,2.6vw,1.8rem);line-height:1.25}
+.quote blockquote::before{content:"\201C";position:absolute;left:0;top:-.35em;font-size:3.4em;line-height:1;color:var(--rood)}
+.quote figcaption{margin-top:.5rem;padding-left:2.4rem;font-size:.9rem}
+
+/* Voetnootnummers in de tekst */
+sup.fn{font-size:.72em;line-height:0;margin-left:.1em}
+sup.fn a{color:var(--rood);font-weight:700;text-decoration:none;cursor:pointer}
+
+
+/* 8. Lijsten en tabellen ------------------------------------------------- */
+
+/* Ingangen met pijl (startpagina, overzichtspagina's) */
+.entries{display:block;margin:1.8rem 0}
+.entries a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.2rem 1rem;padding:1rem 0;
+           border-bottom:2px solid var(--inkt);color:var(--inkt);text-decoration:none}
+.entries a b{font-family:var(--kop);font-stretch:125%;font-weight:700;font-size:clamp(1.3rem,2.6vw,1.8rem);line-height:1.15}
+.entries a span{grid-column:1;font-size:.95rem;font-weight:400}
+.entries a b .ico{margin-right:.7rem}
+.entries a::after{
+  content:"";grid-column:2;grid-row:1 / span 2;width:34px;height:34px;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none' stroke='black' stroke-width='2'%3E%3Cpath d='M4 4 L30 30 M30 8 V30 H8'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none' stroke='black' stroke-width='2'%3E%3Cpath d='M4 4 L30 30 M30 8 V30 H8'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.entries a:hover{color:var(--rood)}
+
+/* Kerngegevens op een praktijkpagina */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.4rem 1.4rem;margin:1.2rem 0}
+.facts div{padding:.5rem 0 .2rem;border-top:2px solid var(--inkt)}
+.facts dt{font-size:.82rem}
+.facts dd{margin:0;font-weight:700}
+
+/* Tabellen */
+.tbl{overflow-x:auto;margin:1rem 0;border-top:2px solid var(--inkt)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:.6rem .7rem;border-bottom:1px solid var(--lijn)}
+th{font-family:var(--kop);font-stretch:112%;font-weight:700}
+table.matrix th,table.matrix td{white-space:nowrap}
+table.matrix thead th.c{writing-mode:vertical-rl;transform:rotate(180deg);padding:.6rem .3rem;font-size:.82rem;vertical-align:bottom}
+table.matrix thead th.c a{font-weight:600;text-decoration-thickness:2px}
+table.matrix td.c{text-align:center;padding:.5rem .3rem}
+.dot{color:var(--rood);font-size:1.1rem}
+
+/* Genummerde lijst met rode bolletjes (pagina Ethiek, theorie) */
+.levels{counter-reset:lv;list-style:none;margin:1rem 0;padding:0;border-top:1px solid var(--inkt)}
+.levels li{counter-increment:lv;position:relative;padding:.75rem 0 .75rem 3rem;border-bottom:1px solid var(--inkt)}
+.levels li::before{content:counter(lv);position:absolute;left:0;top:.65rem;display:grid;place-items:center;width:2rem;height:2rem;
+                   border-radius:50%;background:var(--rood);color:#fff;font-family:var(--kop);font-stretch:125%;font-weight:800}
+
+/* Genummerde lijst van de werkzame factoren */
+.factors{counter-reset:f;list-style:none;margin:1.4rem 0;padding:0;border-top:2px solid var(--inkt)}
+.factors li{counter-increment:f;position:relative;padding:1rem 0 1rem 4rem;border-bottom:2px solid var(--inkt)}
+.factors li::before{content:counter(f);position:absolute;left:0;top:.8rem;font-family:var(--kop);font-stretch:125%;font-weight:800;font-size:2.4rem;line-height:1;color:var(--rood)}
+.factors .ftitle{font-family:var(--kop);font-stretch:125%;font-weight:700;font-size:clamp(1.2rem,2.4vw,1.55rem);color:var(--inkt);text-decoration:none}
+.factors .ftitle:hover{color:var(--rood)}
+.factors p{margin:.3rem 0 0}
+.factors .grond{margin-top:.3rem;padding-top:0;border-top:0}
+
+/* Bronnenlijst */
+.refs{list-style:none;margin:.6rem 0;padding:0}
+.refs li{padding:.55rem .7rem;border-bottom:1px solid var(--lijn);scroll-margin:40vh}
+.refs li.flash{background:var(--rood-zacht);border-left:4px solid var(--rood)}
+
+
+/* 9. Praktijkpagina's ---------------------------------------------------- */
+
+/* Beeld rechts naast de inleiding, licht gekanteld zoals op quindo.be */
+.casefig{float:right;width:38%;max-width:260px;margin:.3rem 0 1rem 1.6rem}
+.casefig.landscape{width:46%;max-width:340px}
+.casefig img{display:block;width:100%;height:auto;transform:rotate(1.5deg);box-shadow:0 12px 30px rgba(80,20,50,.18)}
+.casefig figcaption{margin-top:.7rem;font-size:.82rem;line-height:1.35;color:var(--onderschrift)}
+article[data-page^="praktijk/"] h2{clear:both}
+
+/* Knop naar het resultaat (film, podcast, radio) */
+.resbtn{display:inline-block;padding:.4rem 1rem;background:var(--rood);color:#fff!important;font-weight:700;text-decoration:none}
+.resbtn:hover{background:var(--inkt)}
+.resbtn::after{content:" \2197"}
+.ressrc{margin-left:.4rem;font-size:.85rem}
+
+/* Partnerlogo's (pagina Over het onderzoek) */
+.partner .plogo{display:inline-block;margin-bottom:.5rem}
+.partner .plogo img{display:block;width:auto}
+.partner .plogo:hover img{opacity:.75}
+
+
+/* 10. Onderaan elke pagina ----------------------------------------------- */
+
+.pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2.4rem;padding-top:1rem;border-top:2px solid var(--inkt);font-size:.95rem}
+
+.backlinks{margin-top:3rem;font-size:.95rem}
+.backlinks h2{margin:0 0 .4rem;font-size:1.05rem}
+.backlinks ul{margin:0;padding-left:1.1rem}
+
+.voetnoten{margin-top:2.4rem;padding-top:.8rem;border-top:1px solid var(--lijn);font-size:.85rem}
+.voetnoten h2{margin:0 0 .3rem;font-size:.95rem}
+.voetnoten ol{margin:0;padding-left:1.3rem}
+.voetnoten li{scroll-margin:30vh}
+.voetnoten li.flash{background:var(--rood-zacht)}
+.voetnoten a{font-weight:500;text-decoration-thickness:1px}
+
+.colofon{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--inkt);font-size:.9rem}
+.colofon .copy{font-size:.85rem}
+.orgs{display:flex;flex-wrap:wrap;gap:.8rem;margin:.8rem 0}
+.org{display:inline-flex;align-items:center;min-height:72px;margin-right:1.4rem;padding:.5rem 0;text-decoration:none}
+.org img{display:block;width:auto;height:36px}
+.org.howest img{height:58px}
+.org:hover img{opacity:.75}
+
+
+/* 11. Donkere modus ------------------------------------------------------ */
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --achtergrond-boven:#161214; --achtergrond-midden:#1e1519; --achtergrond-onder:#1b1624;
+    --wit:#221b1f; --inkt:#f4eef1; --rood:#e6606b; --rood-zacht:#3a1f25; --lijn:#3a2f35; --onderschrift:#b8adb3;
+  }
+  :root:not([data-theme="light"]) .ico,
+  :root:not([data-theme="light"]) .hero-ico{background:var(--pictogram-rondje);border-radius:50%;padding:2px}
+  :root:not([data-theme="light"]) .hero-ico{padding:10px}
+  :root:not([data-theme="light"]) .logo-howest,
+  :root:not([data-theme="light"]) .org.howest img{filter:invert(1) hue-rotate(180deg)}
+}
+:root[data-theme="dark"]{
+  --achtergrond-boven:#161214; --achtergrond-midden:#1e1519; --achtergrond-onder:#1b1624;
+  --wit:#221b1f; --inkt:#f4eef1; --rood:#e6606b; --rood-zacht:#3a1f25; --lijn:#3a2f35; --onderschrift:#b8adb3;
+}
+:root[data-theme="dark"] .ico,
+:root[data-theme="dark"] .hero-ico{background:var(--pictogram-rondje);border-radius:50%;padding:2px}
+:root[data-theme="dark"] .hero-ico{padding:10px}
+:root[data-theme="dark"] .logo-howest,
+:root[data-theme="dark"] .org.howest img{filter:invert(1) hue-rotate(180deg)}
+
+
+/* 12. Smal scherm (smartphone) ------------------------------------------- */
+
+@media (max-width:820px){
+  .shell{grid-template-columns:1fr}
+  nav.side{position:static;max-height:none;padding:1rem 1.25rem;border-bottom:1px solid var(--lijn)}
+  .navtoggle{display:inline-block;margin-top:.7rem;padding:.3rem .8rem;font:600 .9rem var(--tekst);background:var(--wit);border:1px solid var(--inkt);color:var(--inkt)}
+  nav.side .navbody{display:none}
+  nav.side.open .navbody{display:block}
+  .hero{gap:1rem}
+  .hero-ico{width:96px;height:96px}
+  .ico-lg{width:72px;height:72px}
+  .arc{gap:.25rem}
+  .arc a{padding:.35rem .3rem;font-size:.68rem}
+  .arc a span{display:none}
+  .casefig{width:42%;margin-left:1rem}
+  .casefig.landscape{width:50%}
+}
+
+
+/* 13. Beweging ----------------------------------------------------------- */
+
+@media (prefers-reduced-motion:no-preference){
+  article{animation:fade .25s ease-out}
+  @keyframes fade{from{opacity:.4}to{opacity:1}}
+}
+@media (prefers-reduced-motion:reduce){
+  .casefig img{transform:none}
+}
+
+
+/* 14. Afdrukken ---------------------------------------------------------- */
+
+@media print{
+  @page{margin:16mm 16mm 18mm}
+  .proto,nav.side,.navtoggle,.back,.backlinks,.pager,.ico-sm{display:none!important}
+  .shell{display:block}
+  main{padding:0}
+  body{font-size:11pt;background:#fff;color:#000}
+  article{max-width:none;page-break-after:always}
+  body:not(.print-all) article[hidden]{display:none!important}
+  body.print-all article[hidden]{display:block!important}
+  body.print-all article[data-page="__stub"]{display:none!important}
+  a{color:#000}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.78em;color:#444;font-weight:400;word-break:break-all}
+  .org::after,.plogo::after,.entries a::after{content:""!important}
+  .resbtn,.resbtn:hover{padding:0;background:none!important;color:#000!important;border:0;text-decoration:underline}
+  .ressrc{display:none}
+  .wv,.callout,.facts div,.result,tr,.casefig,.factors li,.refs li{break-inside:avoid}
+  h1,h2,h3{break-after:avoid}
+  .casefig{max-width:60mm}
+  .casefig img{transform:none;box-shadow:none}
+}
+
+
+/* 15. Bouwmodule "Mijn project" ----------------------------------------- */
+
+/* Knop bij een werkvorm, factor of recht */
+.bouw{display:inline-flex;align-items:center;gap:.3rem;margin-top:.6rem;padding:.25rem .8rem;
+      font:600 .88rem var(--tekst);background:var(--wit);border:1px solid var(--rood);color:var(--rood);cursor:pointer}
+.bouw:hover{background:var(--rood-zacht)}
+.bouw.aan{background:var(--rood);color:#fff}
+.bouw-factor{margin:0 0 1rem}
+
+/* Teller in het menu */
+.teller{display:inline-grid;place-items:center;min-width:1.4rem;height:1.4rem;margin-left:.3rem;padding:0 .35rem;
+        border-radius:999px;background:var(--rood);color:#fff;font-size:.75rem;vertical-align:1px}
+.teller[hidden]{display:none}
+
+/* Pagina Mijn project */
+.pb-velden label,.pb-fase label{display:block;margin:1rem 0 .3rem;font-weight:700}
+.pb-velden input,.pb-velden textarea,.pb-fase textarea{
+  width:100%;padding:.55rem .7rem;font:1rem var(--tekst);color:var(--inkt);
+  background:var(--wit);border:1px solid var(--inkt);border-radius:0}
+.pb-velden input:focus,.pb-velden textarea:focus,.pb-fase textarea:focus{outline:3px solid var(--rood);outline-offset:1px}
+.pb-print{display:none}
+.pb-fase{margin-top:2.6rem;padding-top:.4rem;border-top:2px solid var(--inkt)}
+.pb-fase h2{display:flex;align-items:center;margin-top:.6rem}
+.pb-fase h2 a{text-decoration:none}
+.pb-fase .kort{margin:1rem 0}
+.pb-fase .kort h3{margin:0 0 .2rem;font-size:1rem}
+.pb-lijst{list-style:none;margin:.6rem 0;padding:0}
+.pb-lijst li{display:flex;gap:1rem;justify-content:space-between;align-items:flex-start;padding:.7rem 0 .7rem 1rem;border-left:3px solid var(--rood);margin:.6rem 0}
+.pb-item p{margin:.2rem 0}
+.pb-weg{flex:none;padding:.2rem .6rem;font:600 .8rem var(--tekst);background:none;border:1px solid var(--inkt);color:var(--inkt);cursor:pointer}
+.pb-weg:hover{border-color:var(--rood);color:var(--rood)}
+.pb-leeg{font-style:italic}
+.pb-vraag{font-family:var(--kop);font-stretch:112%;font-weight:700;font-size:1.1rem}
+.pb-acties{margin-top:3rem}
+.pb-knoppen{display:flex;flex-wrap:wrap;gap:.5rem}
+.pb-knop{padding:.45rem 1rem;font:700 .95rem var(--tekst);background:var(--rood);border:1px solid var(--rood);color:#fff;cursor:pointer}
+.pb-knop:hover{background:var(--inkt);border-color:var(--inkt)}
+.pb-knop.pb-licht{background:var(--wit);color:var(--inkt);border-color:var(--inkt)}
+.pb-knop.pb-licht:hover{border-color:var(--rood);color:var(--rood)}
+.pb-melding{min-height:1.5em;font-weight:600}
+
+@media print{
+  .bouw,.pb-weg,.pb-acties,.pb-gedeeld .pb-knop{display:none!important}
+  .pb-velden input,.pb-velden textarea,.pb-fase textarea{display:none}
+  .pb-print{display:block;white-space:pre-wrap;min-height:1.2em;padding:.3rem 0;border-bottom:1px solid #999}
+  .pb-fase{break-inside:auto}
+  .pb-lijst li{break-inside:avoid}
+}
