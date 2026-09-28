@@ -16,7 +16,12 @@
 
    Werkvormen toevoegen aan de bouwmodule: geef het blok in index.html een
    vaste naam, bijvoorbeeld <section class="wv" data-wv="fase-2/mijn-werkvorm">.
-   Verander die naam later niet: opgeslagen projecten verwijzen ernaar.
+   Staat de werkvorm niet op een fasepagina, geef dan ook de fase mee:
+   <section class="wv" data-wv="toestemming/mijn-werkvorm" data-fase="fase-4">.
+   Staat dezelfde werkvorm ook op een fasepagina, gebruik dan gewoon dezelfde
+   naam als daar (zonder data-fase): dan telt ze als één keuze.
+   Verander een naam later niet: opgeslagen projecten verwijzen ernaar. Moet het
+   toch, zet de oude naam dan in ALIASSEN.
    ========================================================================= */
 
 (function () {
@@ -44,6 +49,32 @@
     { veld: 'waarom', label: 'Waarom wil je dit project doen, en wat willen de jongeren ermee?', lang: true }
   ];
 
+  // Oude namen die intussen gekoppeld zijn aan een werkvorm op een fasepagina.
+  // Zo blijven projecten en deellinks van vroeger werken. Voeg hier een regel toe
+  // als je ooit de naam (data-wv) van een werkvorm moet veranderen.
+  var ALIASSEN = {
+    "toestemming/duidelijke-afspraken-voor-elk-interview": "fase-2/voorgesprek-met-een-duidelijke-afspraak",
+    "toestemming/praten-over-publiceren": "fase-2/praten-over-publiceren",
+    "toestemming/zichtbaarheid-per-moment-kiezen": "fase-3/zelf-kiezen-wat-zichtbaar-is",
+    "toestemming/eigen-versie-met-een-vraag": "fase-4/eigen-versie-terugsturen",
+    "toestemming/testvisie-met-beslissingsrecht": "fase-4/testvisie-met-beslissingsrecht",
+    "toestemming/ruwe-montage-met-twee-vragen": "fase-4/ruwe-montage-tonen-met-twee-vragen",
+    "toestemming/laatste-check": "fase-4/laatste-check-met-hernieuwde-toestemming",
+    "toestemming/stap-voor-stap-opschalen": "fase-5/stap-voor-stap-opschalen-met-toestemming-per-sta",
+    "toestemming/de-maker-deelt-zelf": "fase-5/jongeren-delen-zelf",
+    "toestemming/afspraken-per-jongere-na-de-evaluatie": "fase-6/samen-evalueren-dan-afspraken-per-jongere",
+    "toestemming/het-ruwe-materiaal-is-opvraagbaar": "fase-6/het-ruwe-materiaal-is-van-de-maker"
+  };
+
+  function zonderAliassen(keuzes) {
+    var uit = [];
+    keuzes.forEach(function (id) {
+      var echt = ALIASSEN[id] || id;
+      if (uit.indexOf(echt) < 0) uit.push(echt);
+    });
+    return uit;
+  }
+
   /* ---------------------------------------------------------------------
      Opslag
      --------------------------------------------------------------------- */
@@ -56,6 +87,7 @@
       var p = JSON.parse(ruw);
       var basis = leeg();
       Object.keys(basis).forEach(function (k) { if (p[k] === undefined) p[k] = basis[k]; });
+      p.keuzes = zonderAliassen(p.keuzes);
       return p;
     } catch (e) { return leeg(); }
   }
@@ -72,14 +104,20 @@
   function tekst(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
 
   var catalogus = {}; // id -> {id, groep, titel, tekst, voorwaarde, pagina}
+  var TITELS = {};    // pagina -> titel, om de herkomst van een werkvorm te tonen
+  document.querySelectorAll('article[data-page]').forEach(function (a) { TITELS[a.dataset.page] = a.dataset.title; });
 
+  // Staat dezelfde werkvorm (zelfde data-wv) op meer pagina's, dan telt ze als één
+  // keuze. Voor de tekst in het project geldt de versie op de fasepagina.
   document.querySelectorAll('[data-wv]').forEach(function (blok) {
     var id = blok.dataset.wv;
     var pagina = blok.closest('article').dataset.page;
+    if (catalogus[id] && catalogus[id].pagina.indexOf('fase-') === 0) return;
     var p = blok.querySelector('p:not(.cond)');
     catalogus[id] = {
       id: id,
-      groep: id.indexOf('recht/') === 0 ? 'recht' : (pagina === 'fasen' ? 'doorlopend' : pagina),
+      // Groep: de fase uit data-fase, anders de fasepagina waarop het blok staat.
+      groep: blok.dataset.fase || (id.indexOf('recht/') === 0 ? 'recht' : (pagina === 'fasen' ? 'doorlopend' : pagina)),
       titel: tekst(blok.querySelector('h3')),
       tekst: tekst(p),
       voorwaarde: tekst(blok.querySelector('.cond')),
@@ -166,7 +204,7 @@
       var b = code.replace(/-/g, '+').replace(/_/g, '/');
       while (b.length % 4) b += '=';
       var d = JSON.parse(decodeURIComponent(escape(atob(b))));
-      return { naam: d.n || '', wat: d.a || '', wie: d.w || '', waarom: d.r || '', keuzes: d.k || [], notities: d.t || {} };
+      return { naam: d.n || '', wat: d.a || '', wie: d.w || '', waarom: d.r || '', keuzes: zonderAliassen(d.k || []), notities: d.t || {} };
     } catch (e) { return null; }
   }
 
@@ -177,7 +215,10 @@
 
   function lijstWerkvormen(items, alleenLezen) {
     return '<ul class="pb-lijst">' + items.map(function (w) {
-      return '<li><div class="pb-item"><strong><a href="#/' + esc(w.pagina) + '">' + esc(w.titel) + '</a></strong>' +
+      // Staat de werkvorm op een andere pagina dan de fase zelf, toon dan waar ze vandaan komt.
+      var herkomst = (w.groep.indexOf('fase-') === 0 && w.pagina !== w.groep && TITELS[w.pagina])
+        ? '<span class="pb-herkomst">Uit: ' + esc(TITELS[w.pagina]) + '</span>' : '';
+      return '<li><div class="pb-item"><strong><a href="#/' + esc(w.pagina) + '">' + esc(w.titel) + '</a></strong>' + herkomst +
         (w.tekst ? '<p>' + esc(w.tekst) + '</p>' : '') +
         (w.voorwaarde ? '<p class="cond">' + esc(w.voorwaarde) + '</p>' : '') + '</div>' +
         (alleenLezen ? '' : '<button type="button" class="pb-weg" data-weg="' + esc(w.id) + '">Verwijder</button>') + '</li>';
