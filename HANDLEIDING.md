@@ -145,7 +145,13 @@ Lezers kunnen werkvormen, werkzame factoren en de drie rechten toevoegen aan een
 <section class="wv" data-wv="fase-2/storyboard-en-script">
 ```
 
-Nieuwe werkvorm? Geef ze een nieuwe, unieke naam in dezelfde vorm (`fase-nummer/korte-naam`). De knop verschijnt dan vanzelf. Verander de naam van een bestaande werkvorm niet meer: opgeslagen projecten en deellinks verwijzen ernaar. De titel en de tekst mag je wel aanpassen.
+Nieuwe werkvorm? Geef ze een nieuwe, unieke naam in dezelfde vorm (`fase-nummer/korte-naam`). De knop verschijnt dan vanzelf. Staat een werkvorm niet op een fasepagina (zoals op de pagina Toestemming als doorlopend proces), geef dan ook de fase mee, zodat ze in het project onder de juiste fase komt:
+
+```html
+<section class="wv" data-wv="toestemming/stopsignaal" data-fase="fase-3">
+```
+
+Staat dezelfde werkvorm ook op een fasepagina, geef ze dan exact dezelfde naam als daar (en laat `data-fase` weg). Dan telt ze als één keuze: wie ze aanklikt op de ene pagina, ziet ze ook op de andere aangevinkt. Moet je ooit toch een naam veranderen, zet de oude naam dan in de lijst `ALIASSEN` bovenaan `js/projectbouwer.js`, zodat oude projecten blijven werken. Verander de naam van een bestaande werkvorm niet meer: opgeslagen projecten en deellinks verwijzen ernaar. De titel en de tekst mag je wel aanpassen.
 
 **Denkvragen en startvragen aanpassen.** Bovenaan `js/projectbouwer.js` staan `DENKVRAGEN` (één per fase, overgenomen van de pagina Ethiek en toestemming) en `STARTVRAGEN` (de vragen bovenaan het project). Pas daar de tekst aan tussen de aanhalingstekens.
 
