@@ -16,6 +16,7 @@
 - Printen, downloaden, mailen, kopiëren en delen via een link.
 
 **Inhoud**
+- De acht werkzame factoren herschreven: per pagina een inleiding, "Waarom het werkt" met genummerde redenen, "Zo zag het eruit", "Wanneer het sterker werkt" en verwijzingen onderaan.
 - Theorie: nieuwe inleiding, sectie "Van cliënt naar maker", bij elke sectie "Voor jou als begeleider".
 - Ethiek en toestemming: drie rechten met pictogrammen, toestemmingsformulier met voorbeeldartikel over intrekken, sectie "Wat zegt de wet?" met bronnen, kernvragen, hulpmiddelen om te downloaden.
 - Over het onderzoek: partners met logo, stuurploeg, onderzoeksteam met contact, steun Vlaamse Overheid.
