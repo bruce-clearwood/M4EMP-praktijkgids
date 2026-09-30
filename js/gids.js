@@ -35,7 +35,9 @@
       '<a class="org howest" href="https://www.howest.be/nl" target="_blank" rel="noopener"><img src="' + beeld('img/logo-howest.png') + '" alt="Howest hogeschool"></a>' +
       '<a class="org" href="https://www.quindo.be" target="_blank" rel="noopener"><img src="' + beeld('img/logo-quindo.png') + '" alt="Quindo"></a>' +
     '</div>' +
-    '<p class="copy">\u00a9 Hogeschool West-Vlaanderen en Quindo vzw</p>';
+    '<p class="copy">\u00a9 Hogeschool West-Vlaanderen en Quindo vzw</p>' +
+    '<p class="ai">Bij het verwerken van de gegevens en de opmaak van deze gids werd generatieve AI gebruikt. ' +
+    'De conclusies, redeneringen en argumentaties zijn van de auteurs, die er de eindverantwoordelijkheid voor dragen.</p>';
 
   var main = document.getElementById('main');
   var paginas = {};   // id -> <article>
@@ -50,6 +52,13 @@
   document.querySelectorAll('img[src^="img/"]').forEach(function (im) {
     im.src = beeld(im.getAttribute('src'));
   });
+  // Optionele beelden (bijvoorbeeld een logo dat nog aangeleverd moet worden):
+  // ontbreekt het bestand, dan verdwijnt het beeld in plaats van een leeg vak te tonen.
+  document.querySelectorAll('img[data-optioneel]').forEach(function (im) {
+    function weg() { im.hidden = true; }
+    if (im.complete && im.naturalWidth === 0) weg(); else im.addEventListener('error', weg);
+  });
+
   // Downloads: in de gebundelde versie zitten ook die in window.GIDS_BEELDEN.
   document.querySelectorAll('a[href^="downloads/"]').forEach(function (a) {
     var pad = a.getAttribute('href');
@@ -248,8 +257,14 @@
     if (!terugBezig && spoor[spoor.length - 1] !== adres) spoor.push(adres);
     terugBezig = false;
 
+    // Het menu toont waar je bent. Fasen, factoren en praktijken staan niet apart
+    // in het menu: dan licht de overkoepelende kop op.
+    var menuDoel = id;
+    if (id.indexOf('praktijk/') === 0) menuDoel = 'praktijken';
+    else if (id.indexOf('fase-') === 0) menuDoel = 'fasen';
+    else if (id.indexOf('waarom/') === 0) menuDoel = 'waarom';
     document.querySelectorAll('nav.side a[href^="#/"]').forEach(function (a) {
-      if (a.getAttribute('href') === '#/' + id) a.setAttribute('aria-current', 'page');
+      if (a.getAttribute('href') === '#/' + menuDoel) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
 
@@ -275,16 +290,7 @@
 
   /* Afdrukken ------------------------------------------------------------ */
   var printPagina = document.getElementById('printPage');
-  var printAlles = document.getElementById('printAll');
-  if (printPagina) printPagina.addEventListener('click', function () {
-    document.body.classList.remove('print-all');
-    window.print();
-  });
-  if (printAlles) printAlles.addEventListener('click', function () {
-    document.body.classList.add('print-all');
-    window.print();
-    setTimeout(function () { document.body.classList.remove('print-all'); }, 1000);
-  });
+  if (printPagina) printPagina.addEventListener('click', function () { window.print(); });
 
   window.addEventListener('hashchange', toon);
   // Pas starten als de hele pagina geladen is, zodat ook de projectbouwer klaarstaat.

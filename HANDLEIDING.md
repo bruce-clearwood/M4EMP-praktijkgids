@@ -10,6 +10,7 @@ m4emp-gids/
 ├── css/stijl.css               opmaak: kleuren, lettertypes, marges
 ├── js/gids.js                  werking: menu, voetnoten, terugknop
 ├── js/projectbouwer.js         bouwmodule "Mijn project"
+├── js/zoeken.js                zoekfunctie rechtsboven
 ├── img/
 │   ├── logo-howest.png
 │   ├── logo-quindo.png
@@ -78,6 +79,8 @@ Enkele bouwstenen die je vaak tegenkomt:
 </div>
 ```
 
+**Een genummerde opsomming** krijgt rode cijferbolletjes: gebruik `<ol class="levels">` voor een lijst, of `<span class="nr">1</span>` voor een los nummer (bijvoorbeeld in een tabel).
+
 **Een uitgelicht citaat** (enkel echte citaten van informanten):
 
 ```html
@@ -98,7 +101,7 @@ De lijst "Pagina's die hiernaar verwijzen" onderaan elke pagina maakt het script
 
 1. **Beeld:** zet een liggend of staand beeld (JPG, ongeveer 1000 pixels breed) in `img/praktijken/`, bijvoorbeeld `mijn-praktijk.jpg`.
 2. **Pagina:** kopieer een bestaande praktijkpagina (van `<article data-page="praktijk/...` tot en met `</article>`), plak ze onder de laatste praktijk en pas het adres, de titel en de inhoud aan.
-3. **Menu:** voeg onder `<h2><a href="#/praktijken">Praktijken</a></h2>` een regel toe: `<li><a href="#/praktijk/mijn-praktijk">Mijn praktijk</a></li>`.
+3. **Menu:** het menu toont enkel de overkoepelende pagina's (Mijn project, Ethiek en toestemming, Kracht van mediamaken, 8 werkzame factoren, Productiefasen, Praktijken, Over deze gids). Losse praktijken, fasen en factoren zijn bereikbaar via hun overzichtspagina. Een menuregel toevoegen is dus niet nodig. Staat je op een praktijk-, fase- of factorpagina, dan licht de overkoepelende kop op in het menu.
 4. **Overzichtspagina:** voeg op de pagina `praktijken` een ingang toe in `<div class="entries">`.
 5. **Bron:** voeg op de bronnenpagina een regel toe onder "Negen praktijken" met `id="b-p-mijnpraktijk"`, en zet in de inleiding van de praktijkpagina `<sup class="fn" data-ref="p-mijnpraktijk"></sup>`.
 
@@ -123,7 +126,7 @@ Dat maakt `media-for-empowerment-gebundeld.html` (ongeveer 1 MB), met alle opmaa
 ## 10. Controlelijst voor publicatie
 
 - [ ] De regel `<meta name="robots" content="noindex, nofollow">` in de `<head>` van `index.html` verwijderd, zodat zoekmachines de gids vinden.
-- [ ] De prototypebalk bovenaan verwijderd (het blok `<div class="proto" ...>` in `index.html`). De printknoppen verdwijnen dan mee; zet ze eventueel elders terug, of laat lezers printen via hun browser.
+- [ ] De prototypebalk bovenaan verwijderd ("Prototype praktijkgids M4EMP v1") (het blok `<div class="proto" ...>` in `index.html`). De knop "Print deze pagina" verdwijnt dan mee; zet die eventueel elders terug, of laat lezers printen via hun browser.
 - [ ] Toestemming van de partners voor tekst, beelden en links per praktijk (zie het tabblad Partnercheck in het werkbestand van ronde 1).
 - [ ] De voorlopige pictogrammen vervangen, of bewust behouden.
 - [ ] De onvolledige bronvermeldingen aangevuld (zie het interne document met de bronverantwoording).
@@ -201,3 +204,9 @@ Op de pagina Ethiek en toestemming staan drie hulpmiddelen om te downloaden. De 
 Het bundelscript neemt alle bestanden uit `downloads` automatisch mee in de gebundelde versie.
 
 De lettertypes Archivo en Figtree vallen onder de SIL Open Font License en mogen mee verspreid worden.
+
+## 15. Zoekfunctie en logo Vlaamse Overheid
+
+**Zoeken.** Het zoekveld staat vast rechtsboven op elke pagina (op een smartphone als vergrootglas dat openklapt). Het doorzoekt alle pagina's behalve "Mijn project"; nieuwe pagina's worden vanzelf meegenomen. Een resultaat springt naar de juiste plek op een pagina als de tussentitel een id heeft die met `s-` begint (bijvoorbeeld `<h2 id="s-wet">`). De werking staat in `js/zoeken.js`. Sneltoets: druk op `/` om meteen te zoeken.
+
+**Logo Vlaamse Overheid.** Op de pagina Over het onderzoek staat een plaats voor het logo "Vlaanderen, verbeelding werkt". Het bestand staat in de map `img` als `logo-vlaanderen.png`. Het is de witte versie, met een doorzichtige achtergrond. Ontbreekt het bestand, dan toont de pagina enkel de tekst.

@@ -265,7 +265,7 @@
       var fase = 'fase-' + (i + 1);
       var gekozenHier = keuzesIn(p, fase);
       html += '<section class="pb-fase"><h2><span class="ico ico-md"><img src="' + beeld('img/pictogrammen/' + fase + '.svg') + '" alt=""></span>' +
-        '<a href="#/' + fase + '">' + (i + 1) + '. ' + esc(naam) + '</a></h2>';
+        '<a href="#/' + fase + '"><span class="nr">' + (i + 1) + '</span>' + esc(naam) + '</a></h2>';
       var kort = kortVan(fase);
       if (kort.length) html += '<div class="kort"><h3>In het kort</h3><ul>' + kort.map(function (k) { return '<li>' + esc(k) + '</li>'; }).join('') + '</ul></div>';
       html += '<h3>Jouw werkvormen</h3>';
@@ -324,7 +324,7 @@
       var knop = e.target.closest('[data-actie]');
       if (!knop) return;
       var actie = knop.dataset.actie;
-      if (actie === 'print') { document.body.classList.remove('print-all'); window.print(); }
+      if (actie === 'print') window.print();
       if (actie === 'download') download();
       if (actie === 'mail') mail();
       if (actie === 'kopieer') kopieer(alsTekst(gedeeld || project), 'Je project is gekopieerd als tekst.');

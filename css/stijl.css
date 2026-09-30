@@ -20,6 +20,7 @@
    13. Beweging
    14. Afdrukken
    15. Bouwmodule "Mijn project"
+   16. Zoekfunctie
 
    Kaderregel: een wit kader met rode lijn bovenaan is er enkel voor tips en
    afwegingen (.callout), het resultaatblok (.result) en de bedanking (.dank).
@@ -82,7 +83,7 @@ h3{font-family:var(--kop);font-stretch:112%;font-weight:700;font-size:1.08rem;li
 
 .proto{
   display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;
-  padding:.55rem 1.5rem;font-size:.875rem;
+  padding:.55rem 340px .55rem 1.5rem;font-size:.875rem; /* rechts ruimte voor het zoekveld */
   background:var(--wit);border-bottom:1px solid var(--lijn);
 }
 .proto-knoppen{display:flex;gap:.5rem;flex-wrap:wrap}
@@ -109,6 +110,17 @@ nav.side li a{display:flex;align-items:center;padding:.18rem 0;font-weight:500;f
 nav.side a:hover{color:var(--rood)}
 nav.side li a[aria-current="page"],nav.side h2 a[aria-current="page"]{color:var(--rood);font-weight:700;text-decoration:underline;text-decoration-color:var(--rood);text-decoration-thickness:3px}
 nav.side h2 a[aria-current="page"]{font-weight:inherit}
+
+/* Knop "Mijn project" bovenaan het menu: zelfde vorm als de knoppen "Voeg toe aan mijn project" (.bouw) */
+.nav-project{display:inline-flex;align-items:center;gap:.4rem;margin:1.4rem 0 .4rem;padding:.35rem .9rem;
+             font:600 .95rem var(--tekst);text-transform:lowercase;text-decoration:none;
+             background:var(--wit);border:1px solid var(--rood);color:var(--rood)}
+.nav-project:hover{background:var(--rood-zacht);color:var(--rood)}
+.nav-project[aria-current="page"]{background:var(--rood);color:#fff}
+.nav-project[aria-current="page"] .teller{background:#fff;color:var(--rood)}
+
+/* Kleinere links onder "Over deze gids" */
+nav.side .nav-klein li a{padding:.1rem 0;font-size:.85rem;font-weight:400}
 .navtoggle{display:none}
 
 
@@ -224,10 +236,16 @@ table.matrix thead th.c a{font-weight:600;text-decoration-thickness:2px}
 table.matrix td.c{text-align:center;padding:.5rem .3rem}
 .dot{color:var(--rood);font-size:1.1rem}
 
+/* Rood cijferbolletje, herbruikbaar in elke genummerde opsomming: <span class="nr">1</span> */
+.nr{display:inline-grid;place-items:center;flex:none;width:1.6em;height:1.6em;margin-right:.45em;vertical-align:.08em;
+    border-radius:50%;background:var(--rood);color:#fff;font-family:var(--kop);font-stretch:125%;font-weight:800;font-size:.8em;line-height:1;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.entries a b .nr{font-size:.55em;vertical-align:.35em}
+
 /* Genummerde lijst met rode bolletjes (pagina Ethiek, theorie) */
 .levels{counter-reset:lv;list-style:none;margin:1rem 0;padding:0;border-top:1px solid var(--inkt)}
 .levels li{counter-increment:lv;position:relative;padding:.75rem 0 .75rem 3rem;border-bottom:1px solid var(--inkt)}
-.levels li::before{content:counter(lv);position:absolute;left:0;top:.65rem;display:grid;place-items:center;width:2rem;height:2rem;
+.levels li::before{-webkit-print-color-adjust:exact;print-color-adjust:exact;content:counter(lv);position:absolute;left:0;top:.65rem;display:grid;place-items:center;width:2rem;height:2rem;
                    border-radius:50%;background:var(--rood);color:#fff;font-family:var(--kop);font-stretch:125%;font-weight:800}
 
 /* Kernvragen op de pagina Ethiek en toestemming */
@@ -236,7 +254,9 @@ table.matrix td.c{text-align:center;padding:.5rem .3rem}
 /* Genummerde lijst van de werkzame factoren */
 .factors{counter-reset:f;list-style:none;margin:1.4rem 0;padding:0;border-top:2px solid var(--inkt)}
 .factors li{counter-increment:f;position:relative;padding:1rem 0 1rem 4rem;border-bottom:2px solid var(--inkt)}
-.factors li::before{content:counter(f);position:absolute;left:0;top:.8rem;font-family:var(--kop);font-stretch:125%;font-weight:800;font-size:2.4rem;line-height:1;color:var(--rood)}
+.factors li::before{content:counter(f);position:absolute;left:0;top:1.05rem;display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:50%;
+                    background:var(--rood);color:#fff;font-family:var(--kop);font-stretch:125%;font-weight:800;font-size:1.3rem;line-height:1;
+                    -webkit-print-color-adjust:exact;print-color-adjust:exact}
 .factors .ftitle{font-family:var(--kop);font-stretch:125%;font-weight:700;font-size:clamp(1.2rem,2.4vw,1.55rem);color:var(--inkt);text-decoration:none}
 .factors .ftitle:hover{color:var(--rood)}
 .factors p{margin:.3rem 0 0}
@@ -262,6 +282,17 @@ article[data-page^="praktijk/"] h2{clear:both}
 .resbtn:hover{background:var(--inkt)}
 .resbtn::after{content:" \2197"}
 .ressrc{margin-left:.4rem;font-size:.85rem}
+
+/* In te vullen plaats in een voorbeeldtekst (stippenlijn) */
+.invul{display:inline-block;min-width:10em;height:1.1em;vertical-align:baseline;border-bottom:1.5px dotted var(--inkt)}
+.invul.kort{min-width:4.5em}
+
+/* Stuurploeg en steun (pagina Over het onderzoek) */
+.stuurploeg{margin:.6rem 0;padding-left:1.2rem}
+.stuurploeg li{margin:.25rem 0}
+.steun{margin-top:.8rem}
+.steun img{display:block;width:auto;margin-top:.3rem}
+/* Het logo is de witte versie, zonder achtergrond. */
 
 /* Downloads (pagina Ethiek en toestemming) */
 .downloads{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -293,6 +324,7 @@ article[data-page^="praktijk/"] h2{clear:both}
 
 .colofon{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--inkt);font-size:.9rem}
 .colofon .copy{font-size:.85rem}
+.colofon .ai{font-size:.8rem;max-width:62ch}
 .orgs{display:flex;flex-wrap:wrap;gap:.8rem;margin:.8rem 0}
 .org{display:inline-flex;align-items:center;min-height:72px;margin-right:1.4rem;padding:.5rem 0;text-decoration:none}
 .org img{display:block;width:auto;height:36px}
@@ -363,9 +395,7 @@ article[data-page^="praktijk/"] h2{clear:both}
   main{padding:0}
   body{font-size:11pt;background:#fff;color:#000}
   article{max-width:none;page-break-after:always}
-  body:not(.print-all) article[hidden]{display:none!important}
-  body.print-all article[hidden]{display:block!important}
-  body.print-all article[data-page="__stub"]{display:none!important}
+  article[hidden]{display:none!important}
   a{color:#000}
   a[href^="http"]::after{content:" (" attr(href) ")";font-size:.78em;color:#444;font-weight:400;word-break:break-all}
   .org::after,.plogo::after,.entries a::after{content:""!important}
@@ -427,3 +457,37 @@ article[data-page^="praktijk/"] h2{clear:both}
   .pb-fase{break-inside:auto}
   .pb-lijst li{break-inside:avoid}
 }
+
+
+/* 16. Zoekfunctie -------------------------------------------------------- */
+
+/* Enkel voor schermlezers */
+.verborgen{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.zoek{position:fixed;top:calc(env(safe-area-inset-top,0px) + .4rem);right:1rem;z-index:50;width:300px}
+.zoek input{
+  width:100%;padding:.45rem .8rem .45rem 2.1rem;font:1rem var(--tekst);color:var(--inkt);
+  background:var(--wit) no-repeat .65rem center/1rem;border:1px solid var(--inkt);border-radius:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b72634' stroke-width='3'%3E%3Ccircle cx='10' cy='10' r='7'/%3E%3Cpath d='M15 15l7 7'/%3E%3C/svg%3E");
+}
+.zoek input:focus{outline:3px solid var(--rood);outline-offset:1px}
+.zoek-resultaten{margin-top:.3rem;max-height:70vh;overflow:auto;background:var(--wit);border:1px solid var(--inkt);border-top:4px solid var(--rood);box-shadow:0 12px 30px rgba(80,20,50,.18)}
+.zoek-item{display:block;padding:.55rem .8rem;border-bottom:1px solid var(--lijn);color:var(--inkt);text-decoration:none;font-weight:400}
+.zoek-item b{display:block;font-size:.92rem}
+.zoek-item b span{font-weight:500}
+.zoek-item small{display:block;font-size:.82rem;line-height:1.4}
+.zoek-item mark{background:var(--rood-zacht);color:inherit;font-weight:700}
+.zoek-item:hover,.zoek-item.actief{background:var(--rood-zacht);color:var(--inkt)}
+.zoek-leeg{margin:0;padding:.7rem .8rem;font-size:.9rem}
+
+@media (max-width:820px){
+  .proto{padding-right:1.5rem}
+  .zoek{right:.5rem;width:44px}
+  .zoek input{height:40px;padding:0;color:transparent;cursor:pointer;background-position:center}
+  .zoek input::placeholder{color:transparent}
+  .zoek:focus-within{left:.5rem;width:auto}
+  .zoek:focus-within input{padding:.45rem .8rem .45rem 2.1rem;color:var(--inkt);cursor:text;background-position:.65rem center}
+  .zoek:focus-within input::placeholder{color:#777}
+}
+
+@media print{ .zoek{display:none!important} }

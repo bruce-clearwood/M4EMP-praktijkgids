@@ -21,11 +21,17 @@
 <body>
 
 <div class="proto" role="note">
-  <span><strong>Prototype</strong> (werktekst, niet geredigeerd). Pictogrammen zijn voorlopig.</span>
+  <span>Prototype praktijkgids M4EMP v1 (oktober 2026)</span>
   <span class="proto-knoppen">
     <button type="button" id="printPage">Print deze pagina</button>
-    <button type="button" id="printAll">Print alle pagina's</button>
   </span>
+</div>
+
+<!-- Zoekfunctie: vast rechtsboven, werking in js/zoeken.js -->
+<div class="zoek" role="search">
+  <label for="zoekveld" class="verborgen">Zoek in de gids</label>
+  <input id="zoekveld" type="search" placeholder="Zoek in de gids" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="zoekresultaten" aria-autocomplete="list">
+  <div id="zoekresultaten" class="zoek-resultaten" role="listbox" aria-label="Zoekresultaten" hidden></div>
 </div>
 
 <div class="shell">
@@ -33,42 +39,48 @@
   <a class="logo" href="#/start">Media for Empowerment<small>praktijkgids</small></a>
   <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navbody">Menu</button>
   <div class="navbody" id="navbody">
-    <h2><a href="#/project">Mijn project <span class="teller" data-teller hidden></span></a></h2>
-    <h2><a href="#/fasen">Start de productie</a></h2>
-    <ul><li><a href="#/fase-1"><span class="ico ico-sm" data-icon="fase-1"></span>1. Voorbereiding</a></li><li><a href="#/fase-2"><span class="ico ico-sm" data-icon="fase-2"></span>2. Pre-productie</a></li><li><a href="#/fase-3"><span class="ico ico-sm" data-icon="fase-3"></span>3. Productie</a></li><li><a href="#/fase-4"><span class="ico ico-sm" data-icon="fase-4"></span>4. Post-productie</a></li><li><a href="#/fase-5"><span class="ico ico-sm" data-icon="fase-5"></span>5. Toonmoment</a></li><li><a href="#/fase-6"><span class="ico ico-sm" data-icon="fase-6"></span>6. Nazorg</a></li></ul>
-    <h2><a href="#/theorie">Waarom het werkt</a></h2>
-    <h2><a href="#/waarom">Werkzame factoren</a></h2>
-    <ul><li><a href="#/waarom/zeggenschap"><span class="ico ico-sm" data-icon="waarom/zeggenschap"></span>Zeggenschap over je verhaal</a></li><li><a href="#/waarom/luisteren"><span class="ico ico-sm" data-icon="waarom/luisteren"></span>Nieuwsgierige luisterhouding</a></li><li><a href="#/waarom/toonmoment"><span class="ico ico-sm" data-icon="waarom/toonmoment"></span>Gehoord en gezien worden</a></li><li><a href="#/waarom/toestemming"><span class="ico ico-sm" data-icon="waarom/toestemming"></span>Toestemming als doorlopend proces</a></li><li><a href="#/waarom/derde-plek"><span class="ico ico-sm" data-icon="waarom/derde-plek"></span>Plek buiten de zorg</a></li><li><a href="#/waarom/duo"><span class="ico ico-sm" data-icon="waarom/duo"></span>Twee begeleiders, twee rollen</a></li><li><a href="#/waarom/herhaling"><span class="ico ico-sm" data-icon="waarom/herhaling"></span>Tempo en ritme</a></li><li><a href="#/waarom/herkenning"><span class="ico ico-sm" data-icon="waarom/herkenning"></span>Herkenning bij gelijken</a></li></ul>
+    <a class="nav-project" href="#/project">Mijn project <span class="teller" data-teller hidden></span></a>
     <h2><a href="#/ethiek">Ethiek en toestemming</a></h2>
-    <h2>Over deze gids</h2>
-    <ul><li><a href="#/over">Over het onderzoek</a></li><li><a href="#/bronnen">Bronnen</a></li></ul>
+    <h2><a href="#/theorie">Kracht van mediamaken</a></h2>
+    <h2><a href="#/waarom">8 werkzame factoren</a></h2>
+    <h2><a href="#/fasen">Productiefasen</a></h2>
     <h2><a href="#/praktijken">Praktijken</a></h2>
-    <ul><li><a href="#/praktijk/ik-ben-hier-ook">Ik Ben Hier Ook</a></li><li><a href="#/praktijk/18-en-dan">18 en dan?</a></li><li><a href="#/praktijk/chelseas-blues">Chelsea's Blues</a></li><li><a href="#/praktijk/foscast">FOScast</a></li><li><a href="#/praktijk/radio-vandewalle">Radio Vandewalle</a></li><li><a href="#/praktijk/hacktisch">#HACKtisch</a></li><li><a href="#/praktijk/radio-binnenstad">Radio Binnenstad</a></li><li><a href="#/praktijk/rupture">Rupture</a></li><li><a href="#/praktijk/putain">Putain</a></li></ul>
+    <h2>Over deze gids</h2>
+    <ul class="nav-klein">
+      <li><a href="#/over">Over het onderzoek</a></li>
+      <li><a href="#/bronnen">Bronnen</a></li>
+    </ul>
   </div>
 </nav>
 
 <main id="main" tabindex="-1">
 <!-- ===================== START ===================== -->
 <article data-page="start" data-title="Start">
-  <div class="hero"><div class="hero-ico"><img src="img/pictogrammen/media-for-empowerment.svg" alt=""></div><h1>Samen media maken met jongeren</h1></div>
+  <div class="hero">
+    <div class="hero-ico"><img src="img/pictogrammen/media-for-empowerment.svg" alt=""></div>
+    <h1>Samen media maken met jongeren</h1>
+  </div>
   <p class="lead">Een gids voor jeugdwerkers die met jongeren een podcast, radio-uitzending of film willen maken. De jongeren komen zelf aan het woord en beslissen mee.</p>
-  <p>Kies de ingang die past bij je vraag.</p>
-  <div class="entries">
-    <a href="#/fasen"><b>Start de productie</b><span>Wat doe je in elke fase, van voorbereiding tot nazorg?</span></a>
-    <a href="#/project"><b>Bouw je project</b><span>Kies werkvormen per fase en maak je eigen projectplan.</span></a>
-    <a href="#/praktijken"><b>Praktijken</b><span>Negen praktijken uit Vlaanderen en Brussel.</span></a>
-    <a href="#/theorie"><b>Waarom het werkt</b><span>Waarom media maken jongeren sterker maakt.</span></a>
-  </div>
-  <div class="callout">
-    <h3>Waar de gids op steunt</h3>
-    <p>Deze gids steunt op interviews en analyse van <a href="#/praktijken">negen praktijken</a>.<sup class="fn" data-ref="methode"></sup> Bij elk onderdeel staat uit welke praktijk het komt, zodat je verder kan lezen.</p>
-  </div>
+
   <h2>Zo gebruik je deze gids</h2>
   <ol class="levels">
     <li>Lees de pagina <a href="#/ethiek">Ethiek en toestemming</a> voor je start.</li>
     <li>Blader door de <a href="#/fasen">zes fasen</a> en de <a href="#/praktijken">praktijken</a>, en voeg toe wat je wil gebruiken.</li>
     <li>Werk je plan uit in <a href="#/project">Mijn project</a>, met een denkvraag per fase.</li>
   </ol>
+
+  <p>Kies de ingang die past bij je vraag.</p>
+  <div class="entries">
+    <a href="#/fasen"><b>Productiefasen</b><span>Wat doe je in elke fase, van voorbereiding tot nazorg?</span></a>
+    <a href="#/project"><b>Mijn project</b><span>Kies werkvormen per fase en maak je eigen projectplan.</span></a>
+    <a href="#/praktijken"><b>Praktijken</b><span>Negen praktijken uit Vlaanderen en Brussel.</span></a>
+    <a href="#/theorie"><b>Kracht van mediamaken</b><span>Waarom media maken jongeren sterker maakt.</span></a>
+  </div>
+
+  <div class="callout">
+    <h3>Waar de gids op steunt</h3>
+    <p>Deze gids steunt op interviews en analyse van <a href="#/praktijken">negen praktijken</a>.<sup class="fn" data-ref="methode"></sup> Bij elk onderdeel staat uit welke praktijk het komt, zodat je verder kan lezen.</p>
+  </div>
 </article>
 
 <!-- ===================== FASEN (landing) ===================== -->
@@ -77,12 +89,12 @@
   <h1>Zes fasen</h1>
   <p class="lead">Een mediaproductie met jongeren volgt een herkenbare structuur. Per fase vind je werkvormen die in de praktijk gebruikt werden, met de context waarin ze het best werken.</p>
   <div class="entries">
-    <a href="#/fase-1"><b><span class="ico ico-md" data-icon="fase-1"></span>1. Voorbereiding</b><span>Partners, plek, tijd en budget. Jongeren maken kennis met het project.</span></a>
-    <a href="#/fase-2"><b><span class="ico ico-md" data-icon="fase-2"></span>2. Pre-productie</b><span>Samen het concept, het format en de afspraken bepalen.</span></a>
-    <a href="#/fase-3"><b><span class="ico ico-md" data-icon="fase-3"></span>3. Productie</b><span>Opnemen, interviewen, filmen. Iedereen heeft een rol.</span></a>
-    <a href="#/fase-4"><b><span class="ico ico-md" data-icon="fase-4"></span>4. Post-productie</b><span>Van opnames naar een product. Jongeren blijven mee aan het stuur.</span></a>
-    <a href="#/fase-5"><b><span class="ico ico-md" data-icon="fase-5"></span>5. Toonmoment</b><span>Het product bereikt een publiek, de makers worden gezien.</span></a>
-    <a href="#/fase-6"><b><span class="ico ico-md" data-icon="fase-6"></span>6. Nazorg</b><span>Afronden, evalueren en afspraken voor later.</span></a>
+    <a href="#/fase-1"><b><span class="ico ico-md" data-icon="fase-1"></span><span class="nr">1</span>Voorbereiding</b><span>Partners, plek, tijd en budget. Jongeren maken kennis met het project.</span></a>
+    <a href="#/fase-2"><b><span class="ico ico-md" data-icon="fase-2"></span><span class="nr">2</span>Pre-productie</b><span>Samen het concept, het format en de afspraken bepalen.</span></a>
+    <a href="#/fase-3"><b><span class="ico ico-md" data-icon="fase-3"></span><span class="nr">3</span>Productie</b><span>Opnemen, interviewen, filmen. Iedereen heeft een rol.</span></a>
+    <a href="#/fase-4"><b><span class="ico ico-md" data-icon="fase-4"></span><span class="nr">4</span>Post-productie</b><span>Van opnames naar een product. Jongeren blijven mee aan het stuur.</span></a>
+    <a href="#/fase-5"><b><span class="ico ico-md" data-icon="fase-5"></span><span class="nr">5</span>Toonmoment</b><span>Het product bereikt een publiek, de makers worden gezien.</span></a>
+    <a href="#/fase-6"><b><span class="ico ico-md" data-icon="fase-6"></span><span class="nr">6</span>Nazorg</b><span>Afronden, evalueren en afspraken voor later.</span></a>
   </div>
   <p>De fasen zijn een houvast. In de praktijk lopen ze in elkaar over, en sommige vragen (zoals toestemming) komen in elke fase terug.<sup class="fn" data-ref="quindo-fiche"></sup></p>
 
@@ -584,12 +596,12 @@
   <div class="tbl"><table>
     <thead><tr><th>Fase</th><th>Wat er gebeurde</th><th>Om mee te nemen</th></tr></thead>
     <tbody>
-      <tr><td><a href="#/fase-1">1. Voorbereiding</a></td><td>Samenwerking met een begeleider uit de jeugdhulp die de jongeren al goed kende en vaak zag. Daarna een vrijblijvend kennismakingsmoment.</td><td>Een begeleider met een bestaande band maakt opvolgen eenvoudig. Jongeren stappen in op eigen keuze.</td></tr>
-      <tr><td><a href="#/fase-2">2. Pre-productie</a></td><td>Elke jongere maakte een tijdlijn en stelde die voor aan de groep. Daarna samen interviewvragen opstellen.</td><td>Uit die voorstelling kwam de zin die de titel van de film werd.</td></tr>
-      <tr><td><a href="#/fase-3">3. Productie</a></td><td>Een dag aan zee waar iedereen een rol kreeg. Interviews, telkens meteen samen teruggekeken. Een bezoek aan een televisiestudio tussendoor.</td><td>Tussentijdse ontmoetingen en activiteiten houden de energie vast.</td></tr>
-      <tr><td><a href="#/fase-4">4. Post-productie</a></td><td>Story building in groep. De mediabegeleider monteerde, en jongeren konden aanschuiven.</td><td>Gevoelige fragmenten werden apart besproken.</td></tr>
-      <tr><td><a href="#/fase-5">5. Toonmoment</a></td><td>Première in de cinema met familie en publiek.</td><td>De aankondiging maakt het verschil tussen vertellen en naar buiten brengen voelbaar.</td></tr>
-      <tr><td><a href="#/fase-6">6. Nazorg</a></td><td>Samen evalueren, dan per jongere afspraken over verdere vertoningen.</td><td>Het eerste halfjaar vroeg elke vertoning toestemming, daarna kwam de film vrij online.</td></tr>
+      <tr><td><a href="#/fase-1"><span class="nr">1</span>Voorbereiding</a></td><td>Samenwerking met een begeleider uit de jeugdhulp die de jongeren al goed kende en vaak zag. Daarna een vrijblijvend kennismakingsmoment.</td><td>Een begeleider met een bestaande band maakt opvolgen eenvoudig. Jongeren stappen in op eigen keuze.</td></tr>
+      <tr><td><a href="#/fase-2"><span class="nr">2</span>Pre-productie</a></td><td>Elke jongere maakte een tijdlijn en stelde die voor aan de groep. Daarna samen interviewvragen opstellen.</td><td>Uit die voorstelling kwam de zin die de titel van de film werd.</td></tr>
+      <tr><td><a href="#/fase-3"><span class="nr">3</span>Productie</a></td><td>Een dag aan zee waar iedereen een rol kreeg. Interviews, telkens meteen samen teruggekeken. Een bezoek aan een televisiestudio tussendoor.</td><td>Tussentijdse ontmoetingen en activiteiten houden de energie vast.</td></tr>
+      <tr><td><a href="#/fase-4"><span class="nr">4</span>Post-productie</a></td><td>Story building in groep. De mediabegeleider monteerde, en jongeren konden aanschuiven.</td><td>Gevoelige fragmenten werden apart besproken.</td></tr>
+      <tr><td><a href="#/fase-5"><span class="nr">5</span>Toonmoment</a></td><td>Première in de cinema met familie en publiek.</td><td>De aankondiging maakt het verschil tussen vertellen en naar buiten brengen voelbaar.</td></tr>
+      <tr><td><a href="#/fase-6"><span class="nr">6</span>Nazorg</a></td><td>Samen evalueren, dan per jongere afspraken over verdere vertoningen.</td><td>Het eerste halfjaar vroeg elke vertoning toestemming, daarna kwam de film vrij online.</td></tr>
     </tbody>
   </table></div>
     <figure class="quote"><blockquote>Ja, ik ben de regisseur.</blockquote><figcaption>Jongere</figcaption></figure>
@@ -631,12 +643,12 @@
   <div class="tbl"><table>
     <thead><tr><th>Fase</th><th>Wat er gebeurde</th></tr></thead>
     <tbody>
-      <tr><td><a href="#/fase-1">1. Voorbereiding</a></td><td>Het thema groeide uit de maandelijkse samenkomsten. Een duidelijk moment waarop de groep besliste: we gaan ervoor. De opnames haakten aan op het jaarlijkse kamp.</td></tr>
-      <tr><td><a href="#/fase-2">2. Pre-productie</a></td><td>Een interviewleidraad, opgebouwd uit de thema's van de werking. Een voorgesprek: alles mag eruit, je mag ons onderbreken, je hoeft niet te antwoorden.</td></tr>
-      <tr><td><a href="#/fase-3">3. Productie</a></td><td>Elke voormiddag van het kamp gesprekken. Openingscirkels over het thema zonder camera. De jeugdwerker zat naast de camera.</td></tr>
-      <tr><td><a href="#/fase-4">4. Post-productie</a></td><td>Elke jongere kreeg de eigen interviewversie met de vraag wat er zeker niet in mocht. Tussendoor een preview.</td></tr>
-      <tr><td><a href="#/fase-5">5. Toonmoment</a></td><td>Première op de Dag van de Jeugdzorg, met beleidsmakers in de zaal. De jongeren modereerden zelf het nagesprek. Verspreiding via partners.</td></tr>
-      <tr><td><a href="#/fase-6">6. Nazorg</a></td><td>Vertoning op de algemene vergadering, met jongeren en bestuur samen.</td></tr>
+      <tr><td><a href="#/fase-1"><span class="nr">1</span>Voorbereiding</a></td><td>Het thema groeide uit de maandelijkse samenkomsten. Een duidelijk moment waarop de groep besliste: we gaan ervoor. De opnames haakten aan op het jaarlijkse kamp.</td></tr>
+      <tr><td><a href="#/fase-2"><span class="nr">2</span>Pre-productie</a></td><td>Een interviewleidraad, opgebouwd uit de thema's van de werking. Een voorgesprek: alles mag eruit, je mag ons onderbreken, je hoeft niet te antwoorden.</td></tr>
+      <tr><td><a href="#/fase-3"><span class="nr">3</span>Productie</a></td><td>Elke voormiddag van het kamp gesprekken. Openingscirkels over het thema zonder camera. De jeugdwerker zat naast de camera.</td></tr>
+      <tr><td><a href="#/fase-4"><span class="nr">4</span>Post-productie</a></td><td>Elke jongere kreeg de eigen interviewversie met de vraag wat er zeker niet in mocht. Tussendoor een preview.</td></tr>
+      <tr><td><a href="#/fase-5"><span class="nr">5</span>Toonmoment</a></td><td>Première op de Dag van de Jeugdzorg, met beleidsmakers in de zaal. De jongeren modereerden zelf het nagesprek. Verspreiding via partners.</td></tr>
+      <tr><td><a href="#/fase-6"><span class="nr">6</span>Nazorg</a></td><td>Vertoning op de algemene vergadering, met jongeren en bestuur samen.</td></tr>
     </tbody>
   </table></div>
   <h2>Wat hier werkt</h2>
@@ -674,12 +686,12 @@
   <div class="tbl"><table>
     <thead><tr><th>Fase</th><th>Wat er gebeurde</th></tr></thead>
     <tbody>
-      <tr><td><a href="#/fase-1">1. Voorbereiding</a></td><td>De maker vroeg zelf om een film over haar leven. De begeleider zocht het juiste moment en stemde de omvang af op wat zij aankon.</td></tr>
-      <tr><td><a href="#/fase-2">2. Pre-productie</a></td><td>Ze koos vijf mensen die belangrijk waren in haar leven, en bereidde de vragen mee voor. Ze besliste zelf te interviewen.</td></tr>
-      <tr><td><a href="#/fase-3">3. Productie</a></td><td>Twee en een halve dag opnames. De camera was bij haar bewust aanwezig, bij de anderen discreet.</td></tr>
-      <tr><td><a href="#/fase-4">4. Post-productie</a></td><td>De ruwe montage met twee vragen: begrijpen we jou, en wat moet eruit of erin? Daarna een aparte stap voor de mensen in de film.</td></tr>
-      <tr><td><a href="#/fase-5">5. Toonmoment</a></td><td>Een uitverkochte première, daarna televisie en festivals. Bij elke stap opnieuw toestemming.</td></tr>
-      <tr><td><a href="#/fase-6">6. Nazorg</a></td><td>Ongeveer een jaar opvolging.</td></tr>
+      <tr><td><a href="#/fase-1"><span class="nr">1</span>Voorbereiding</a></td><td>De maker vroeg zelf om een film over haar leven. De begeleider zocht het juiste moment en stemde de omvang af op wat zij aankon.</td></tr>
+      <tr><td><a href="#/fase-2"><span class="nr">2</span>Pre-productie</a></td><td>Ze koos vijf mensen die belangrijk waren in haar leven, en bereidde de vragen mee voor. Ze besliste zelf te interviewen.</td></tr>
+      <tr><td><a href="#/fase-3"><span class="nr">3</span>Productie</a></td><td>Twee en een halve dag opnames. De camera was bij haar bewust aanwezig, bij de anderen discreet.</td></tr>
+      <tr><td><a href="#/fase-4"><span class="nr">4</span>Post-productie</a></td><td>De ruwe montage met twee vragen: begrijpen we jou, en wat moet eruit of erin? Daarna een aparte stap voor de mensen in de film.</td></tr>
+      <tr><td><a href="#/fase-5"><span class="nr">5</span>Toonmoment</a></td><td>Een uitverkochte première, daarna televisie en festivals. Bij elke stap opnieuw toestemming.</td></tr>
+      <tr><td><a href="#/fase-6"><span class="nr">6</span>Nazorg</a></td><td>Ongeveer een jaar opvolging.</td></tr>
     </tbody>
   </table></div>
     <figure class="quote"><blockquote>Als vanuit een helikopter.</blockquote><figcaption>De begeleider bij Chelsea's Blues, over hoe de maker naar haar eigen verhaal kon kijken</figcaption></figure>
@@ -717,12 +729,12 @@
   <div class="tbl"><table>
     <thead><tr><th>Fase</th><th>Wat er gebeurde</th></tr></thead>
     <tbody>
-      <tr><td><a href="#/fase-1">1. Voorbereiding</a></td><td>Een werkgroep met gratis toegang tot een professionele studio van een mediapartner. Een ontwerpworkshop en een proefopname.</td></tr>
-      <tr><td><a href="#/fase-2">2. Pre-productie</a></td><td>Per seizoen een brainstorm van zes uur, met speelse stellingen als opstap. Daarna per aflevering een vergadering over onderwerp, format en gasten.</td></tr>
-      <tr><td><a href="#/fase-3">3. Productie</a></td><td>Vier uur opname voor twee afleveringen. De rollen van host en tijdsbewaker wisselen en worden kort op voorhand verdeeld. De staf blijft buiten de studio.</td></tr>
-      <tr><td><a href="#/fase-4">4. Post-productie</a></td><td>Een vaste editor met journalistieke achtergrond monteert.</td></tr>
-      <tr><td><a href="#/fase-5">5. Toonmoment</a></td><td>Publicatie op Spotify. De luistercijfers gaan terug naar de makers.</td></tr>
-      <tr><td><a href="#/fase-6">6. Nazorg</a></td><td>Een korte nabespreking na elke opname. Tussen de seizoenen korte polls bij het publiek.</td></tr>
+      <tr><td><a href="#/fase-1"><span class="nr">1</span>Voorbereiding</a></td><td>Een werkgroep met gratis toegang tot een professionele studio van een mediapartner. Een ontwerpworkshop en een proefopname.</td></tr>
+      <tr><td><a href="#/fase-2"><span class="nr">2</span>Pre-productie</a></td><td>Per seizoen een brainstorm van zes uur, met speelse stellingen als opstap. Daarna per aflevering een vergadering over onderwerp, format en gasten.</td></tr>
+      <tr><td><a href="#/fase-3"><span class="nr">3</span>Productie</a></td><td>Vier uur opname voor twee afleveringen. De rollen van host en tijdsbewaker wisselen en worden kort op voorhand verdeeld. De staf blijft buiten de studio.</td></tr>
+      <tr><td><a href="#/fase-4"><span class="nr">4</span>Post-productie</a></td><td>Een vaste editor met journalistieke achtergrond monteert.</td></tr>
+      <tr><td><a href="#/fase-5"><span class="nr">5</span>Toonmoment</a></td><td>Publicatie op Spotify. De luistercijfers gaan terug naar de makers.</td></tr>
+      <tr><td><a href="#/fase-6"><span class="nr">6</span>Nazorg</a></td><td>Een korte nabespreking na elke opname. Tussen de seizoenen korte polls bij het publiek.</td></tr>
     </tbody>
   </table></div>
   <h2>Wat hier werkt</h2>
@@ -802,12 +814,12 @@
   <div class="tbl"><table>
     <thead><tr><th>Fase</th><th>Wat er gebeurde</th></tr></thead>
     <tbody>
-      <tr><td><a href="#/fase-1">1. Voorbereiding</a></td><td>Drie partners met elk een eigen rol: jeugdwerk, psychologie en media. Een kick-off met kennismaking voor de groep.</td></tr>
-      <tr><td><a href="#/fase-2">2. Pre-productie</a></td><td>Een brainstorm met een podcastcanvas. De groep koos een vaste opbouw per aflevering.</td></tr>
-      <tr><td><a href="#/fase-3">3. Productie</a></td><td>Verhalen één op één uitgeschreven met een jeugdwerker. Voxpops op straat, opgenomen door de jongeren zelf. Werkateliers met opnames en groepsgesprekken.</td></tr>
-      <tr><td><a href="#/fase-4">4. Post-productie</a></td><td>Samen de edits beluisteren, bindteksten inspreken en de volgorde kiezen. Een laatste check met hernieuwde toestemming.</td></tr>
-      <tr><td><a href="#/fase-5">5. Toonmoment</a></td><td>Release op een publiek evenement, in aanwezigheid van de Vlaamse minister van Welzijn. De jongeren stonden zelf op het podium.</td></tr>
-      <tr><td><a href="#/fase-6">6. Nazorg</a></td><td>Toestemming wordt opnieuw gevraagd bij elk nieuw gebruik.</td></tr>
+      <tr><td><a href="#/fase-1"><span class="nr">1</span>Voorbereiding</a></td><td>Drie partners met elk een eigen rol: jeugdwerk, psychologie en media. Een kick-off met kennismaking voor de groep.</td></tr>
+      <tr><td><a href="#/fase-2"><span class="nr">2</span>Pre-productie</a></td><td>Een brainstorm met een podcastcanvas. De groep koos een vaste opbouw per aflevering.</td></tr>
+      <tr><td><a href="#/fase-3"><span class="nr">3</span>Productie</a></td><td>Verhalen één op één uitgeschreven met een jeugdwerker. Voxpops op straat, opgenomen door de jongeren zelf. Werkateliers met opnames en groepsgesprekken.</td></tr>
+      <tr><td><a href="#/fase-4"><span class="nr">4</span>Post-productie</a></td><td>Samen de edits beluisteren, bindteksten inspreken en de volgorde kiezen. Een laatste check met hernieuwde toestemming.</td></tr>
+      <tr><td><a href="#/fase-5"><span class="nr">5</span>Toonmoment</a></td><td>Release op een publiek evenement, in aanwezigheid van de Vlaamse minister van Welzijn. De jongeren stonden zelf op het podium.</td></tr>
+      <tr><td><a href="#/fase-6"><span class="nr">6</span>Nazorg</a></td><td>Toestemming wordt opnieuw gevraagd bij elk nieuw gebruik.</td></tr>
     </tbody>
   </table></div>
   <h2>Wat hier werkt</h2>
@@ -846,11 +858,11 @@
   <div class="tbl"><table>
     <thead><tr><th>Fase</th><th>Wat er gebeurde</th></tr></thead>
     <tbody>
-      <tr><td><a href="#/fase-1">1. Voorbereiding</a></td><td>De voorziening peilt wie zin heeft. Begeleiders komen met een draagbare set naar de jongere. Daarna een bezoek aan de studio.</td></tr>
-      <tr><td><a href="#/fase-2">2. Pre-productie</a></td><td>Een kort gesprek: waarover gaat de show, en welke rol neem je op (presentator, geïnterviewde, dj)?</td></tr>
-      <tr><td><a href="#/fase-3">3. Productie</a></td><td>Een uur live. De jongere bedient zelf de knoppen, kiest de muziek, presenteert. Een studiobegeleider staat erbij.</td></tr>
-      <tr><td><a href="#/fase-5">5. Toonmoment</a></td><td>Luisteraars reageren via een chat. De show wordt opgenomen en de jongere deelt ze zelf.</td></tr>
-      <tr><td><a href="#/fase-6">6. Nazorg</a></td><td>Om de vier weken een nieuwe show. Tussendoor contact via WhatsApp.</td></tr>
+      <tr><td><a href="#/fase-1"><span class="nr">1</span>Voorbereiding</a></td><td>De voorziening peilt wie zin heeft. Begeleiders komen met een draagbare set naar de jongere. Daarna een bezoek aan de studio.</td></tr>
+      <tr><td><a href="#/fase-2"><span class="nr">2</span>Pre-productie</a></td><td>Een kort gesprek: waarover gaat de show, en welke rol neem je op (presentator, geïnterviewde, dj)?</td></tr>
+      <tr><td><a href="#/fase-3"><span class="nr">3</span>Productie</a></td><td>Een uur live. De jongere bedient zelf de knoppen, kiest de muziek, presenteert. Een studiobegeleider staat erbij.</td></tr>
+      <tr><td><a href="#/fase-5"><span class="nr">5</span>Toonmoment</a></td><td>Luisteraars reageren via een chat. De show wordt opgenomen en de jongere deelt ze zelf.</td></tr>
+      <tr><td><a href="#/fase-6"><span class="nr">6</span>Nazorg</a></td><td>Om de vier weken een nieuwe show. Tussendoor contact via WhatsApp.</td></tr>
     </tbody>
   </table></div>
     <figure class="quote"><blockquote>Geruststellen, niet panikeren, relativeren, blijven praten.</blockquote><figcaption>Radio Binnenstad, over de rol van de studiobegeleider</figcaption></figure>
@@ -890,11 +902,11 @@
   <div class="tbl"><table>
     <thead><tr><th>Fase</th><th>Wat er gebeurde</th></tr></thead>
     <tbody>
-      <tr><td><a href="#/fase-1">1. Voorbereiding</a></td><td>De vraag kwam van de jeugdwerking zelf. Een kennismakingsavond met de groep.</td></tr>
-      <tr><td><a href="#/fase-3">3. Productie</a></td><td>Een week trektocht in de bergen. De regisseurs liepen mee en filmden. Wie een micro wilde, kreeg er een. 's Avonds tekenden de jongeren een tijdlijn.</td></tr>
-      <tr><td><a href="#/fase-4">4. Post-productie</a></td><td>Een testvisie bij de jeugdwerking: de jongeren zagen zichzelf en konden beelden laten vervangen.</td></tr>
-      <tr><td><a href="#/fase-5">5. Toonmoment</a></td><td>Premières en vertoningen in volle zalen. Jongeren leidden in en spraken.</td></tr>
-      <tr><td><a href="#/fase-6">6. Nazorg</a></td><td>Een lespakket voor scholen en organisaties.</td></tr>
+      <tr><td><a href="#/fase-1"><span class="nr">1</span>Voorbereiding</a></td><td>De vraag kwam van de jeugdwerking zelf. Een kennismakingsavond met de groep.</td></tr>
+      <tr><td><a href="#/fase-3"><span class="nr">3</span>Productie</a></td><td>Een week trektocht in de bergen. De regisseurs liepen mee en filmden. Wie een micro wilde, kreeg er een. 's Avonds tekenden de jongeren een tijdlijn.</td></tr>
+      <tr><td><a href="#/fase-4"><span class="nr">4</span>Post-productie</a></td><td>Een testvisie bij de jeugdwerking: de jongeren zagen zichzelf en konden beelden laten vervangen.</td></tr>
+      <tr><td><a href="#/fase-5"><span class="nr">5</span>Toonmoment</a></td><td>Premières en vertoningen in volle zalen. Jongeren leidden in en spraken.</td></tr>
+      <tr><td><a href="#/fase-6"><span class="nr">6</span>Nazorg</a></td><td>Een lespakket voor scholen en organisaties.</td></tr>
     </tbody>
   </table></div>
   <h2>Wat hier werkt</h2>
@@ -947,9 +959,8 @@
 
 </article>
 <!-- ===================== THEORIE ===================== -->
-<article data-page="theorie" data-title="Waarom media maken?" hidden>
-  <span class="kind">Waarom het werkt</span>
-  <h1>Waarom media maken?</h1>
+<article data-page="theorie" data-title="Kracht van mediamaken" hidden>
+  <h1>Kracht van mediamaken</h1>
   <p class="lead">Media maken kan versterkend werken. Het positioneert de maker als iemand die iets te vertellen heeft en die ertoe doet.</p>
   <p>Sociale inclusie gaat over toegang tot zorg en diensten, maar ook over gehoord en gezien worden: erkend worden als iemand die iets te zeggen heeft. Samen media maken geeft jongeren de kans om daarin te groeien.<sup class="fn" data-ref="quindo-fiche"></sup></p>
   <p>Dit onderzoek wil ontrafelen welke mechanismen daarvoor zorgen (in deze gids heten ze <a href="#/waarom">werkzame factoren</a>), en hoe je mediaproductie kan inzetten als een volwaardige sociale interventie.</p>
@@ -988,13 +999,13 @@
   <p>Verder lezen: <a href="https://www.canovlaanderen.be/life-story-work/" target="_blank" rel="noopener">Life Story Work bij CANO Vlaanderen</a> en <a href="https://dulwichcentre.com.au/collective-narrative-practice/" target="_blank" rel="noopener">collectieve narratieve praktijk bij het Dulwich Centre</a> (Engelstalig).</p>
   <p class="voor-jou"><strong>Voor jou als begeleider:</strong> luister om te begrijpen, niet om te analyseren, en laat jongeren ontdekken wat ze met anderen delen. Meer: <a href="#/waarom/luisteren">Nieuwsgierige luisterhouding</a>, <a href="#/waarom/herkenning">Herkenning bij gelijken</a></p>
 
-  <h2>Waarom het werkt</h2>
+  <h2>Werkzame factoren</h2>
   <p>Uit de analyse van de negen praktijken komen acht werkzame factoren naar voren. Elke factor kwam in minstens twee praktijken terug.<sup class="fn" data-ref="m4emp-mechanismen"></sup><sup class="fn" data-ref="pawson1997"></sup> Een werkzame factor is iets wat je als begeleider aanreikt, samen met wat dat bij jongeren in gang zet. Of het werkt, hangt af van de context. Je vindt ze allemaal op <a href="#/waarom">Acht werkzame factoren</a>.</p>
 </article>
 
 <!-- ===================== WAAROM (overzicht) ===================== -->
 <article data-page="waarom" data-title="Acht werkzame factoren" hidden>
-  <span class="kind">Waarom het werkt</span>
+  <span class="kind">Kracht van mediamaken</span>
   <h1>Acht werkzame factoren</h1>
   <p class="lead">Wat maakt dat media maken jongeren sterker maakt? Uit de analyse van de negen praktijken komen acht factoren naar voren. Elke factor kwam in minstens twee praktijken terug.<sup class="fn" data-ref="m4emp-mechanismen"></sup></p>
   <p>Een werkzame factor is geen losse techniek. Het is iets wat je als begeleider aanreikt, samen met wat dat bij jongeren in gang zet. Of het werkt, hangt af van de situatie. Daarom staat op elke pagina ook voor wie het extra sterk werkt.<sup class="fn" data-ref="pawson1997"></sup><sup class="fn" data-ref="dalkin2015"></sup></p>
@@ -1014,17 +1025,17 @@
   <div class="tbl"><table class="matrix">
     <thead><tr><th scope="col">Werkzame factor</th><th scope="col" class="c"><a href="#/praktijk/radio-vandewalle">Radio Vandewalle</a></th><th scope="col" class="c"><a href="#/praktijk/radio-binnenstad">Radio Binnenstad</a></th><th scope="col" class="c"><a href="#/praktijk/ik-ben-hier-ook">Ik Ben Hier Ook</a></th><th scope="col" class="c"><a href="#/praktijk/hacktisch">#HACKtisch</a></th><th scope="col" class="c"><a href="#/praktijk/foscast">FOScast</a></th><th scope="col" class="c"><a href="#/praktijk/chelseas-blues">Chelsea's Blues</a></th><th scope="col" class="c"><a href="#/praktijk/putain">Putain</a></th><th scope="col" class="c"><a href="#/praktijk/rupture">Rupture</a></th><th scope="col" class="c"><a href="#/praktijk/18-en-dan">18 en dan?</a></th></tr></thead>
     <tbody>
-<tr><th scope="row"><a href="#/waarom/zeggenschap">1. Zeggenschap over je verhaal</a></th><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
-<tr><th scope="row"><a href="#/waarom/luisteren">2. Nieuwsgierige luisterhouding</a></th><td class="c"></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
-<tr><th scope="row"><a href="#/waarom/toonmoment">3. Gehoord en gezien worden</a></th><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
-<tr><th scope="row"><a href="#/waarom/toestemming">4. Toestemming als doorlopend proces</a></th><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
-<tr><th scope="row"><a href="#/waarom/derde-plek">5. Plek buiten de zorg</a></th><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
-<tr><th scope="row"><a href="#/waarom/duo">6. Twee begeleiders, twee rollen</a></th><td class="c"></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
-<tr><th scope="row"><a href="#/waarom/herhaling">7. Tempo en ritme</a></th><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
-<tr><th scope="row"><a href="#/waarom/herkenning">8. Herkenning bij gelijken</a></th><td class="c"></td><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+<tr><th scope="row"><a href="#/waarom/zeggenschap"><span class="nr">1</span>Zeggenschap over je verhaal</a></th><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
+<tr><th scope="row"><a href="#/waarom/luisteren"><span class="nr">2</span>Nieuwsgierige luisterhouding</a></th><td class="c"></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
+<tr><th scope="row"><a href="#/waarom/toonmoment"><span class="nr">3</span>Gehoord en gezien worden</a></th><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
+<tr><th scope="row"><a href="#/waarom/toestemming"><span class="nr">4</span>Toestemming als doorlopend proces</a></th><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
+<tr><th scope="row"><a href="#/waarom/derde-plek"><span class="nr">5</span>Plek buiten de zorg</a></th><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+<tr><th scope="row"><a href="#/waarom/duo"><span class="nr">6</span>Twee begeleiders, twee rollen</a></th><td class="c"></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td></tr>
+<tr><th scope="row"><a href="#/waarom/herhaling"><span class="nr">7</span>Tempo en ritme</a></th><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+<tr><th scope="row"><a href="#/waarom/herkenning"><span class="nr">8</span>Herkenning bij gelijken</a></th><td class="c"></td><td class="c"><span class="dot soft" title="verwante vorm">○</span></td><td class="c"></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"><span class="dot" title="duidelijk aanwezig">●</span></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
     </tbody>
   </table></div>
-  <p>Meer over de theorie achter deze factoren op <a href="#/theorie">Waarom media maken?</a></p>
+  <p>Meer over de theorie achter deze factoren op <a href="#/theorie">Kracht van mediamaken</a></p>
 </article>
 
 <!-- ===================== 1 ZEGGENSCHAP ===================== -->
@@ -1062,7 +1073,7 @@
   <p>Een echte stem hebben is meer dan gehoord worden. Het is ook mee bepalen hoe je gehoord wordt.<sup class="fn" data-ref="couldry2010"></sup> Wie zeggenschap krijgt over zijn verhaal, bepaalt zelf wat het verhaal is.</p>
   <h2>Hangt samen met</h2>
   <p><a href="#/waarom/toestemming">Toestemming als doorlopend proces</a> trekt deze zeggenschap door na de publicatie. <a href="#/waarom/luisteren">Nieuwsgierige luisterhouding</a> maakt het veilig genoeg om te beginnen.</p>
-  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom">Alle werkzame factoren</a><a href="#/waarom/luisteren">2. Nieuwsgierige luisterhouding &rarr;</a></nav>
+  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom">Alle werkzame factoren</a><a href="#/waarom/luisteren"><span class="nr">2</span>Nieuwsgierige luisterhouding &rarr;</a></nav>
 </article>
 
 <!-- ===================== 2 LUISTEREN ===================== -->
@@ -1087,7 +1098,7 @@
   <div class="callout"><h3>Tip: blijf bij het maken</h3><p>Deze houding vraagt discipline. Blijf tijdens het maken bij het maken, ook als een verhaal om hulp lijkt te vragen. Maak daarna tijd en ruimte voor voldoende zorg.</p><div class="grond"><span>Meer: <a href="#/waarom/duo">Twee begeleiders, twee rollen</a></span></div></div>
   <h2>Waarom dit werkt</h2>
   <p>Jongeren worden gehoord op hun eigen voorwaarden.<sup class="fn" data-ref="couldry2010"></sup> Het sluit aan bij collectieve narratieve praktijk: het verhaal krijgt vorm zonder dat de luisteraar het meteen invult.<sup class="fn" data-ref="denborough2008"></sup> Meer lezen: <a href="https://dulwichcentre.com.au/collective-narrative-practice/" target="_blank" rel="noopener">collectieve narratieve praktijk bij het Dulwich Centre</a> (Engelstalig).</p>
-  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/zeggenschap">&larr; 1. Zeggenschap over je verhaal</a><a href="#/waarom/toonmoment">3. Gehoord en gezien worden &rarr;</a></nav>
+  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/zeggenschap">&larr; <span class="nr">1</span>Zeggenschap over je verhaal</a><a href="#/waarom/toonmoment"><span class="nr">3</span>Gehoord en gezien worden &rarr;</a></nav>
 </article>
 
 <!-- ===================== 3 TOONMOMENT ===================== -->
@@ -1110,8 +1121,8 @@
   <p>Voor jongeren die hun thema zien opgepikt worden door beleid, en voor makers in een hechte gemeenschap waar anderen hun stem herkennen. Voor wie vooral een technische rol had, kan het proces belangrijker zijn dan de première.</p>
   <div class="callout"><h3>Tip: plan de nazorg</h3><p>Een toonmoment is een piek. Plan vooraf wat er de dagen erna gebeurt, en wees voorzichtig met beloftes van genodigden.</p><div class="grond"><span>Meer: <a href="#/fase-6">Nazorg</a></span></div></div>
   <h2>Waarom dit werkt</h2>
-  <p>Een stem wordt pas een stem als er iemand luistert.<sup class="fn" data-ref="couldry2010"></sup> Wanneer een publiek het verhaal opneemt, wordt de jongere erkend als iemand wiens communicatie telt. Meer daarover op <a href="#/theorie">Waarom media maken?</a></p>
-  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/luisteren">&larr; 2. Nieuwsgierige luisterhouding</a><a href="#/waarom/toestemming">4. Toestemming als doorlopend proces &rarr;</a></nav>
+  <p>Een stem wordt pas een stem als er iemand luistert.<sup class="fn" data-ref="couldry2010"></sup> Wanneer een publiek het verhaal opneemt, wordt de jongere erkend als iemand wiens communicatie telt. Meer daarover op <a href="#/theorie">Kracht van mediamaken</a></p>
+  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/luisteren">&larr; <span class="nr">2</span>Nieuwsgierige luisterhouding</a><a href="#/waarom/toestemming"><span class="nr">4</span>Toestemming als doorlopend proces &rarr;</a></nav>
 </article>
 
 <!-- ===================== 4 TOESTEMMING ===================== -->
@@ -1156,7 +1167,7 @@
   <div class="callout"><h3>Tip: toestemming voor het geheel, en voor later</h3><p>Vraag toestemming voor de eigen fragmenten en ook voor de manier waarop ze samengesteld zijn. Maak duidelijk hoe jongeren hun toestemming op lange termijn kunnen aanpassen.</p><div class="grond"><span>Meer: <a href="#/ethiek">Ethiek en toestemming</a></span></div></div>
   <h2>Waarom dit werkt</h2>
   <p>Een stem houdt niet op bij de publicatie.<sup class="fn" data-ref="couldry2010"></sup> Doorlopende toestemming trekt het eigenaarschap door in de tijd.</p>
-  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/toonmoment">&larr; 3. Gehoord en gezien worden</a><a href="#/waarom/derde-plek">5. Plek buiten de zorg &rarr;</a></nav>
+  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/toonmoment">&larr; <span class="nr">3</span>Gehoord en gezien worden</a><a href="#/waarom/derde-plek"><span class="nr">5</span>Plek buiten de zorg &rarr;</a></nav>
 </article>
 
 <!-- ===================== 5 DERDE PLEK ===================== -->
@@ -1177,8 +1188,8 @@
   <p>De studio van Villa Bota in <a href="#/praktijk/radio-binnenstad">Radio Binnenstad</a>, een studio van een mediapartner in <a href="#/praktijk/foscast">FOScast</a>. <a href="#/praktijk/ik-ben-hier-ook">Ik Ben Hier Ook</a> toont een variant: een vertrouwde, huiselijke ruimte die ook ver van de intakekamer staat.</p>
   <div class="callout"><h3>Tip: haal jongeren binnen</h3><p>Voor wie faalangst heeft, is een studio eerst een drempel. Kom samen binnen, laat eerst kijken, en geef de plek tijd om vertrouwd te worden.</p><div class="grond"><span>Meer: <a href="#/fase-1">Voorbereiding</a></span></div></div>
   <h2>Waarom dit werkt</h2>
-  <p>Een andere plek geeft een andere rol. De professionele status van de studio is daarbij de werkzame factor: de uitzending gaat echt de wereld in. Meer over rollen op <a href="#/theorie">Waarom media maken?</a></p>
-  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/toestemming">&larr; 4. Toestemming als doorlopend proces</a><a href="#/waarom/duo">6. Twee begeleiders, twee rollen &rarr;</a></nav>
+  <p>Een andere plek geeft een andere rol. De professionele status van de studio is daarbij de werkzame factor: de uitzending gaat echt de wereld in. Meer over rollen op <a href="#/theorie">Kracht van mediamaken</a></p>
+  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/toestemming">&larr; <span class="nr">4</span>Toestemming als doorlopend proces</a><a href="#/waarom/duo"><span class="nr">6</span>Twee begeleiders, twee rollen &rarr;</a></nav>
 </article>
 
 <!-- ===================== 6 DUO ===================== -->
@@ -1201,8 +1212,8 @@
   <p>Voor jongeren die al een band hebben met een van de begeleiders. Komen jongeren van buiten, reken dan op tijd om die band op te bouwen.</p>
   <div class="callout"><h3>Tip: spreid de rollen</h3><p>Wanneer dezelfde persoon selecteert, beschermt en beslist, wordt veel afhankelijk van die ene persoon. Verdeel die taken over meer mensen.</p><div class="grond"><span>Uit: <a href="#/praktijk/putain">Putain</a></span></div></div>
   <h2>Waarom dit werkt</h2>
-  <p>Zorg en media hebben elk hun eigen logica. Door ze over twee mensen te verdelen, kunnen ze naast elkaar bestaan. Meer op <a href="#/theorie">Waarom media maken?</a></p>
-  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/derde-plek">&larr; 5. Plek buiten de zorg</a><a href="#/waarom/herhaling">7. Tempo en ritme &rarr;</a></nav>
+  <p>Zorg en media hebben elk hun eigen logica. Door ze over twee mensen te verdelen, kunnen ze naast elkaar bestaan. Meer op <a href="#/theorie">Kracht van mediamaken</a></p>
+  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/derde-plek">&larr; <span class="nr">5</span>Plek buiten de zorg</a><a href="#/waarom/herhaling"><span class="nr">7</span>Tempo en ritme &rarr;</a></nav>
 </article>
 
 <!-- ===================== 7 HERHALING ===================== -->
@@ -1223,8 +1234,8 @@
   <p><a href="#/praktijk/radio-binnenstad">Radio Binnenstad</a>, <a href="#/praktijk/foscast">FOScast</a> en <a href="#/praktijk/radio-vandewalle">Radio Vandewalle</a>, waar een café naast de studio makers ook tussen de uitzendingen samenbrengt.</p>
   <div class="callout"><h3>Tip: kies het tempo samen</h3><p>Een te zwaar tempo werkt tegen je. Zo'n verandering heeft tijd nodig: reken op minstens een half jaar.</p></div>
   <h2>Waarom dit werkt</h2>
-  <p>Een rol wordt deel van wie je bent door ze vaak op te nemen, en doordat anderen je er telkens opnieuw in aanspreken. Meer op <a href="#/theorie">Waarom media maken?</a></p>
-  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/duo">&larr; 6. Twee begeleiders, twee rollen</a><a href="#/waarom/herkenning">8. Herkenning bij gelijken &rarr;</a></nav>
+  <p>Een rol wordt deel van wie je bent door ze vaak op te nemen, en doordat anderen je er telkens opnieuw in aanspreken. Meer op <a href="#/theorie">Kracht van mediamaken</a></p>
+  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/duo">&larr; <span class="nr">6</span>Twee begeleiders, twee rollen</a><a href="#/waarom/herkenning"><span class="nr">8</span>Herkenning bij gelijken &rarr;</a></nav>
 </article>
 
 <!-- ===================== 8 HERKENNING ===================== -->
@@ -1247,7 +1258,7 @@
   <p>Bij thema's die veel mensen raken, zoals depressie. Bij een zeldzamer thema groeit vooral het besef dat het onderwerp zichtbaar wordt.</p>
   <h2>Waarom dit werkt</h2>
   <p>Herkenning door gelijken weegt zwaarder dan algemene waardering. Collectieve narratieve praktijk brengt persoonlijke ervaringen samen, zodat een groep ontdekt wat ze deelt.<sup class="fn" data-ref="denborough2008"></sup></p>
-  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/herhaling">&larr; 7. Tempo en ritme</a><a href="#/waarom">Alle werkzame factoren</a></nav>
+  <nav class="pager" aria-label="Werkzame factoren"><a href="#/waarom/herhaling">&larr; <span class="nr">7</span>Tempo en ritme</a><a href="#/waarom">Alle werkzame factoren</a></nav>
 </article>
 <!-- ===================== ETHIEK ===================== -->
 <article data-page="ethiek" data-title="Ethiek en toestemming" hidden>
@@ -1258,9 +1269,9 @@
 
   <h2 id="s-rechten">Drie rechten voor elke jongere</h2>
   <p>Het onderzoeksteam raadt aan om bij de start drie rechten uitdrukkelijk af te spreken. Ze geven de regie van bij de eerste dag aan de jongere, en maken het gesprek over toestemming concreet.<sup class="fn" data-ref="m4emp-ethiek"></sup></p>
-  <section class="wv" data-wv="recht/start-en-stoprecht"><h3>Start- en stoprecht</h3><p>De jongere kiest zelf om in te stappen, en kan tijdens de productie op elk moment aangeven dat hij wil stoppen.</p><div class="grond"><span>In de praktijk: vrij instappen via een proevertje (<a href="#/praktijk/ik-ben-hier-ook">Ik Ben Hier Ook</a>), een afgesproken stopsignaal (<a href="#/praktijk/radio-binnenstad">Radio Binnenstad</a>), "je mag ons onderbreken" (<a href="#/praktijk/18-en-dan">18 en dan?</a>), geen micro betekent niet filmen (<a href="#/praktijk/rupture">Rupture</a>)</span></div></section>
-  <section class="wv" data-wv="recht/praat-en-zwijgrecht"><h3>Praat- en zwijgrecht</h3><p>De jongere kiest zelf wat hij vertelt en hoe. Hij hoeft niet te antwoorden op een vraag, en hoeft zijn verhaal niet te vertellen om mee te doen.</p><div class="grond"><span>In de praktijk: "je hoeft niet te antwoorden" (<a href="#/praktijk/18-en-dan">18 en dan?</a>), meedoen zonder je verhaal te vertellen (<a href="#/praktijk/ik-ben-hier-ook">Ik Ben Hier Ook</a>)</span></div></section>
-  <section class="wv" data-wv="recht/knip-en-plakrecht"><h3>Knip- en plakrecht</h3><p>De jongere beslist mee wat in het eindproduct komt en hoe het wordt samengesteld. Hij kan achteraf aangeven dat een fragment er niet in mag. Bespreek hoe je dat doet: samen de montage bekijken, of een eigen versie per jongere.</p><div class="grond"><span>In de praktijk: een eigen versie met de vraag wat er zeker niet in mag (<a href="#/praktijk/18-en-dan">18 en dan?</a>), een testvisie (<a href="#/praktijk/rupture">Rupture</a>), de ruwe montage met twee vragen (<a href="#/praktijk/chelseas-blues">Chelsea's Blues</a>)</span></div></section>
+  <section class="wv" data-wv="recht/start-en-stoprecht"><h3><span class="ico ico-md" data-icon="recht-start-stop"></span>Start- en stoprecht</h3><p>De jongere kiest zelf om in te stappen, en kan tijdens de productie op elk moment aangeven dat hij wil stoppen.</p><div class="grond"><span>In de praktijk: vrij instappen via een proevertje (<a href="#/praktijk/ik-ben-hier-ook">Ik Ben Hier Ook</a>), een afgesproken stopsignaal (<a href="#/praktijk/radio-binnenstad">Radio Binnenstad</a>), "je mag ons onderbreken" (<a href="#/praktijk/18-en-dan">18 en dan?</a>), geen micro betekent niet filmen (<a href="#/praktijk/rupture">Rupture</a>)</span></div></section>
+  <section class="wv" data-wv="recht/praat-en-zwijgrecht"><h3><span class="ico ico-md" data-icon="waarom/herkenning"></span>Praat- en zwijgrecht</h3><p>De jongere kiest zelf wat hij vertelt en hoe. Hij hoeft niet te antwoorden op een vraag, en hoeft zijn verhaal niet te vertellen om mee te doen.</p><div class="grond"><span>In de praktijk: "je hoeft niet te antwoorden" (<a href="#/praktijk/18-en-dan">18 en dan?</a>), meedoen zonder je verhaal te vertellen (<a href="#/praktijk/ik-ben-hier-ook">Ik Ben Hier Ook</a>)</span></div></section>
+  <section class="wv" data-wv="recht/knip-en-plakrecht"><h3><span class="ico ico-md" data-icon="fase-4"></span>Knip- en plakrecht</h3><p>De jongere beslist mee wat in het eindproduct komt en hoe het wordt samengesteld. Hij kan achteraf aangeven dat een fragment er niet in mag. Bespreek hoe je dat doet: samen de montage bekijken, of een eigen versie per jongere.</p><div class="grond"><span>In de praktijk: een eigen versie met de vraag wat er zeker niet in mag (<a href="#/praktijk/18-en-dan">18 en dan?</a>), een testvisie (<a href="#/praktijk/rupture">Rupture</a>), de ruwe montage met twee vragen (<a href="#/praktijk/chelseas-blues">Chelsea's Blues</a>)</span></div></section>
   <p>Het gaat er vooral om dat jongeren, begeleiders en mediamakers vooraf samen nadenken over wat er met een verhaal kan gebeuren. Hoe de praktijken toestemming concreet vormgaven, van een afspraak voor elk interview tot een laatste check, lees je bij <a href="#/waarom/toestemming">Toestemming als doorlopend proces</a>.</p>
 
   <p class="downloads"><a class="download" href="downloads/drie-rechten-voor-jongeren.pdf" download>Kaart voor jongeren, PDF (104 kB)</a></p>
@@ -1271,10 +1282,10 @@
   <div class="callout">
     <h3>Voorbeeldartikel: je toestemming intrekken</h3>
     <p>Je kan je toestemming op elk moment aanpassen of intrekken, ook als het project al lang voorbij is. Je hoeft niet uit te leggen waarom.</p>
-    <p><strong>Hoe?</strong> Stuur een mail naar [algemeen e-mailadres van de organisatie] of spreek [functie, bijvoorbeeld de coördinator] aan. Je mag dit ook door iemand anders laten vragen. Dit adres blijft geldig, ook als je begeleider niet meer bij ons werkt.</p>
-    <p><strong>Wat doen we dan?</strong> Binnen [termijn] halen we [je fragment of het product] weg van onze eigen kanalen en tonen we het niet meer. We laten je weten wanneer dat gebeurd is.</p>
+    <p><strong>Hoe?</strong> Stuur een mail naar <span class="invul" aria-label="in te vullen: e-mailadres"></span> of spreek <span class="invul" aria-label="in te vullen: functie"></span> aan. Je mag dit ook door iemand anders laten vragen. Dit adres blijft geldig, ook als je begeleider niet meer bij ons werkt.</p>
+    <p><strong>Wat doen we dan?</strong> Binnen <span class="invul kort" aria-label="in te vullen: termijn"></span> halen we je fragment of het product weg van onze eigen kanalen en tonen we het niet meer. We laten je weten wanneer dat gebeurd is.</p>
     <p><strong>Wat kunnen we niet beloven?</strong> Kopieën die anderen al gemaakt of gedeeld hebben, kunnen we niet altijd terughalen. Partners die het product tonen, vragen we om hetzelfde te doen.</p>
-    <p class="cond"><strong>Hou er rekening mee:</strong> dit is een voorbeeld van het onderzoeksteam, geen juridisch getoetste tekst. Vul de gegevens tussen haken aan en laat je formulier nakijken binnen je organisatie. Wie moet tekenen, lees je bij <a href="#/ethiek/wet">Wat zegt de wet?</a></p>
+    <p class="cond"><strong>Hou er rekening mee:</strong> dit is een voorbeeld van het onderzoeksteam, geen juridisch getoetste tekst. Vul de stippenlijnen aan en laat je formulier nakijken binnen je organisatie. Wie moet tekenen, lees je bij <a href="#/ethiek/wet">Wat zegt de wet?</a></p>
   </div>
   <p>Het volledige sjabloon, met het voorbeeldartikel en ruimte voor handtekeningen:</p>
   <p class="downloads"><a class="download" href="downloads/sjabloon-toestemmingsformulier.docx" download>Sjabloon, Word (87 kB)</a> <a class="download" href="downloads/sjabloon-toestemmingsformulier.pdf" download>Sjabloon, PDF (137 kB)</a></p>
@@ -1379,7 +1390,24 @@
     <a class="plogo" href="https://www.quindo.be" target="_blank" rel="noopener"><img src="img/logo-quindo.png" alt="Quindo" height="36"></a>
     <p>Medialab in Kortrijk dat al meer dan tien jaar mediaprojecten met jongeren maakt: radio, podcasts, video en documentaires.</p>
     <p>Zelf op zoek naar ondersteuning bij je mediaproject? Neem contact op via <a href="mailto:info@quindo.be">info@quindo.be</a></p>
+    <div class="steun">
+      <p>Quindo wordt gesteund door de Vlaamse Overheid.</p>
+      <img class="logo-vlaanderen" src="img/logo-vlaanderen.png" alt="Vlaanderen, verbeelding werkt" height="34" data-optioneel>
+    </div>
   </section>
+
+  <h2>Stuurploeg</h2>
+  <p>Een stuurploeg met experts uit onderzoek, onderwijs en het werkveld volgde het project op.</p>
+  <ul class="stuurploeg">
+    <li><strong>Jan Dauwe</strong>, clustermanager Business en Media, Howest</li>
+    <li><strong>Blixa Declerck</strong>, jeugdwerker, Quindo</li>
+    <li><strong>Turid Sintobin</strong>, beleidsmedewerker participatie, Publiq</li>
+    <li><strong>Sofie Vandamme</strong>, Howest Academy</li>
+    <li><strong>Wouter Vandemaele</strong>, docent en onderzoeker Sociaal Werk en Sociale-Readaptatiewetenschappen, Howest</li>
+    <li><strong>Emmy Vandenbussche</strong>, Mediawijs</li>
+    <li><strong>Olu Vandenbussche</strong>, beleidsmedewerker, Uit de Marge</li>
+    <li><strong>Lotte Vermeire</strong>, onderzoeker imec-SMIT, Vrije Universiteit Brussel</li>
+  </ul>
 
   <h2>Onderzoeksteam</h2>
 
@@ -1481,5 +1509,6 @@
 
 <script src="js/gids.js"></script>
 <script src="js/projectbouwer.js"></script>
+<script src="js/zoeken.js"></script>
 </body>
 </html>
