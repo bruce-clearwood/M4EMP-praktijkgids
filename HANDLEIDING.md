@@ -10,7 +10,7 @@ m4emp-gids/
 ├── css/stijl.css               opmaak: kleuren, lettertypes, marges
 ├── js/gids.js                  werking: menu, voetnoten, terugknop
 ├── js/projectbouwer.js         bouwmodule "Mijn project"
-├── js/zoeken.js                zoekfunctie rechtsboven
+├── js/zoeken.js                zoekfunctie bovenaan elke pagina
 ├── img/
 │   ├── logo-howest.png
 │   ├── logo-quindo.png
@@ -66,7 +66,7 @@ Enkele bouwstenen die je vaak tegenkomt:
   <h3>Titel van de werkvorm</h3>
   <p>Wat het is.</p>
   <p class="cond"><strong>Werkt het best</strong> wanneer ...</p>
-  <div class="grond"><span>Uit: <a href="#/praktijk/foscast">FOScast</a></span><span>Meer: <a href="#/waarom/duo">Twee begeleiders, twee rollen</a></span></div>
+  <div class="grond"><span>Uit: <a href="#/praktijk/foscast">FOSCAST</a></span><span>Meer: <a href="#/waarom/duo">Twee begeleiders, twee rollen</a></span></div>
 </section>
 ```
 
@@ -207,6 +207,20 @@ De lettertypes Archivo en Figtree vallen onder de SIL Open Font License en mogen
 
 ## 15. Zoekfunctie en logo Vlaamse Overheid
 
-**Zoeken.** Het zoekveld staat vast rechtsboven op elke pagina (op een smartphone als vergrootglas dat openklapt). Het doorzoekt alle pagina's behalve "Mijn project"; nieuwe pagina's worden vanzelf meegenomen. Een resultaat springt naar de juiste plek op een pagina als de tussentitel een id heeft die met `s-` begint (bijvoorbeeld `<h2 id="s-wet">`). De werking staat in `js/zoeken.js`. Sneltoets: druk op `/` om meteen te zoeken.
+**Zoeken.** Het zoekveld staat bovenaan elke pagina, boven de inhoud. Het hoort bij de pagina en scrolt mee, zodat het nooit tekst afdekt. Het doorzoekt alle pagina's behalve "Mijn project"; nieuwe pagina's worden vanzelf meegenomen. Een resultaat springt naar de juiste plek op een pagina als de tussentitel een id heeft die met `s-` begint (bijvoorbeeld `<h2 id="s-wet">`). De werking staat in `js/zoeken.js`. Sneltoets: druk op `/` om meteen te zoeken.
 
-**Logo Vlaamse Overheid.** Op de pagina Over het onderzoek staat een plaats voor het logo "Vlaanderen, verbeelding werkt". Het bestand staat in de map `img` als `logo-vlaanderen.png`. Het is de witte versie, met een doorzichtige achtergrond. Ontbreekt het bestand, dan toont de pagina enkel de tekst.
+**Logo Vlaamse Overheid.** Op de pagina Over het onderzoek staat het officiële logo "Vlaanderen, verbeelding werkt" (versie volledig zwart) als `img/logo-vlaanderen.svg`. Enkel het canvas is bijgesneden tot de omtrek van het logo; kleuren en vorm zijn ongewijzigd.
+## 16. Begrippenlijst
+
+De pagina Begrippenlijst (menu Over deze gids) legt de vaktermen uit zoals de gids ze gebruikt. Elk begrip heeft een eigen anker, zodat je er vanuit de tekst naar kan linken, bijvoorbeeld `<a href="#/begrippen/co-creatie">co-creatie</a>`. Het anker is de naam van het begrip in kleine letters, met koppeltekens in plaats van spaties (en zonder accenten).
+
+Een begrip toevoegen: voeg in `index.html` binnen `<dl class="begrippen">` een paar toe, in alfabetische volgorde:
+
+```html
+<dt id="s-nieuw-begrip">Nieuw begrip</dt>
+<dd>Omschrijving. <span class="meer">Meer: <a href="#/fase-2">Pre-productie</a></span></dd>
+```
+
+## 17. Een pagina een nieuwe naam geven
+
+Verander je het adres van een pagina (de waarde van `data-page`), zet de oude naam dan in de lijst `OUDE_ADRESSEN` bovenaan de functie `toon` in `js/gids.js`. Zo komen bewaarde links en deellinks nog altijd op de juiste pagina terecht. Voorbeeld: `praktijk/radio-binnenstad` verwijst naar `praktijk/radio-z`.

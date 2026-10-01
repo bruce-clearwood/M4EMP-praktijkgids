@@ -75,9 +75,12 @@
     var woorden = plat(vraag).split(/\s+/).filter(function (w) { return w.length > 1; });
     if (!woorden.length) return [];
     var treffers = [];
+    var heel = plat(vraag.trim());       // de volledige zoekvraag, voor een exacte titel
     index.forEach(function (s) {
       if (!woorden.every(function (w) { return s.plat.indexOf(w) >= 0; })) return;
       var score = 0, t = plat(s.titel), k = plat(s.kop);
+      if (t === heel) score += 100;              // exact de titel van een pagina
+      else if (t.indexOf(heel) >= 0) score += 30; // titel bevat de volledige zoekvraag
       woorden.forEach(function (w) {
         if (t.indexOf(w) >= 0) score += 10;
         if (k.indexOf(w) >= 0) score += 5;

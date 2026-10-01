@@ -236,8 +236,19 @@
   nietGevonden.hidden = true;
   main.appendChild(nietGevonden);
 
+  // Pagina's die een nieuwe naam kregen: oude links blijven zo werken.
+  var OUDE_ADRESSEN = {
+    'praktijk/radio-binnenstad': 'praktijk/radio-z'
+  };
+
   function toon() {
     var adres = location.hash.replace(/^#\//, '') || 'start';
+    for (var oud in OUDE_ADRESSEN) {
+      if (adres === oud || adres.indexOf(oud + '/') === 0) {
+        location.replace('#/' + OUDE_ADRESSEN[oud] + adres.slice(oud.length));
+        return;
+      }
+    }
     var vraag = '';                     // alles na een ? (gebruikt door de projectbouwer)
     var q = adres.indexOf('?');
     if (q >= 0) { vraag = adres.slice(q + 1); adres = adres.slice(0, q); }
